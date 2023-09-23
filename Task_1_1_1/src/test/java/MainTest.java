@@ -32,14 +32,10 @@ class MainTest {
     void heapsort_big_data() {
         int[] testArray;
         testArray = new int[10000];
-        for(int i=0; i<10000; i++){
+        for (int i=0; i<10000; i++) {
             testArray[i] = ThreadLocalRandom.current().nextInt();
         }
         int[] ans = Main.heapsort(testArray);
         Assertions.assertArrayEquals(testArray, ans);
     }
-
-
-
-
 }
