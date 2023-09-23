@@ -2,9 +2,12 @@
  * Класс выполняющий Heapsort
  */
 public class Main {
-    public static void main(String[] args)
-    {
-    }
+    /**
+     * Функция выполняющая просеивание через кучу
+     * @param numbers - массвив Int, который нужно отсортировать
+     * @param root - индекс корневого узла в куче
+     * @param bottom - индекс последнего узла в куче
+     */
     private static void siftDown(int[] numbers, int root, int bottom)
     {
         int maxChild;
@@ -31,7 +34,7 @@ public class Main {
     }
 
     /**
-     * Функция выполняющая Heapsort
+     * Функция выполняющая Heapsort данного массива array
      * @param array - массив, который нужно отсортировать
      * @return возвращает отсортированный массив
      */
