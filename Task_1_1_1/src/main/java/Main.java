@@ -1,4 +1,4 @@
-public class Main {
+class Main {
 
     /**
      * Функция выполняющая просеивание через кучу.
@@ -9,9 +9,8 @@ public class Main {
 
     private static void siftDown(int[] numbers, int root, int bottom) {
         int maxChild;
-        int done = 0;
 
-        while ((root * 2 <= bottom) && (done == 0)) {
+        while ((root * 2 <= bottom)) {
             if (root * 2 == bottom) {
                 maxChild = root * 2;
             } else if (numbers[root * 2] > numbers[root * 2 + 1]) {
@@ -25,7 +24,7 @@ public class Main {
                 numbers[maxChild] = temp;
                 root = maxChild;
             } else {
-                done = 1;
+                break;
             }
         }
     }
@@ -33,12 +32,11 @@ public class Main {
     /**
      * Функция выполняющая Heapsort данного массива array.
      * @param array - массив, который нужно отсортировать.
-     * @return возвращает отсортированный массив.
      */
-    public static int[] heapsort(int[] array) {
+    public static void heapsort(int[] array) {
         int size = array.length;
         if (size == 0) {
-            return array;
+            return;
         }
         for (int i = (size / 2); i >= 0; i--) {
             siftDown(array, i, size - 1);
@@ -49,7 +47,6 @@ public class Main {
             array[i] = temp;
             siftDown(array, 0, i - 1);
         }
-        return array;
     }
 }
 
