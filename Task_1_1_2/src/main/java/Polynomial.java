@@ -18,6 +18,7 @@ public class Polynomial {
 
     /**
      * конструктор для создания многочлена с заданными коэффициентами.
+     *
      * @param coef - массив коэффицентов
      */
     public Polynomial(int[] coef) {
@@ -36,13 +37,14 @@ public class Polynomial {
 
     /**
      * метод для сложения двух полиномов.
+     *
      * @param b - второй полином для сложения
      * @return сумму полиномов
      */
     public Polynomial plus(Polynomial b) {
-        int new_len = Math.max(this.size, b.size);
-        int[] newArr = new int[new_len];
-        for (int i = 0; i < new_len; i++) {
+        int newlen = Math.max(this.size, b.size);
+        int[] newArr = new int[newlen];
+        for (int i = 0; i < newlen; i++) {
             newArr[i] = 0;
             if (this.size > i) {
                 newArr[i] += this.coef[i];
@@ -56,13 +58,14 @@ public class Polynomial {
 
     /**
      * метод для вычитания двух полиномов.
+     *
      * @param b - вычитаемое
      * @return разность полиномов
      */
     public Polynomial minus(Polynomial b) {
-        int new_len = Math.max(this.size, b.size);
-        int[] newArr = new int[new_len];
-        for (int i = 0; i < new_len; i++) {
+        int newlen = Math.max(this.size, b.size);
+        int[] newArr = new int[newlen];
+        for (int i = 0; i < newlen; i++) {
             newArr[i] = 0;
             if (this.size > i) {
                 newArr[i] += this.coef[i];
@@ -76,33 +79,34 @@ public class Polynomial {
 
     /**
      * функция выполняющая умножение двух полиномов.
+     *
      * @param b - второй множитель
      * @return произведение полиномов
      */
     public Polynomial times(Polynomial b) {
         // ищем максимальный индекс с ненулевым значением в полиноме а
-        int max_deg_a = 0;
+        int maxDegA = 0;
         for (int i = 0; i < this.size; i++) {
             if (this.coef[i] != 0) {
-                max_deg_a = i;
+                maxDegA = i;
             }
         }
         // ищем максимальный индекс с ненулевым значением в полиноме b
-        int max_deg_b = 0;
+        int maxDegB = 0;
         for (int i = 0; i < b.size; i++) {
             if (b.coef[i] != 0) {
-                max_deg_b = i;
+                maxDegB = i;
             }
         }
         // создаем новый полином с произведением
-        int new_len = max_deg_a + max_deg_b + 1;
-        int[] newArr = new int[new_len];
-        for (int i = 0; i < new_len; i++) {
+        int newlen = maxDegA + maxDegB + 1;
+        int[] newArr = new int[newlen];
+        for (int i = 0; i < newlen; i++) {
             newArr[i] = 0;
         }
         // выполняем умножение
-        for (int i = 0; i < max_deg_a + 1; i++) {
-            for (int j = 0; j < max_deg_b + 1; j++) {
+        for (int i = 0; i < maxDegA + 1; i++) {
+            for (int j = 0; j < maxDegB + 1; j++) {
                 newArr[i + j] += this.coef[i] * b.coef[j];
             }
         }
@@ -119,6 +123,7 @@ public class Polynomial {
 
     /**
      * функция реализующая вычисление значения в точке.
+     *
      * @param x - значения переменной
      * @return вычисленное значение
      */
@@ -132,22 +137,23 @@ public class Polynomial {
 
     /**
      * функция реализующая взятие i’ой производной.
+     *
      * @param order - степень производной
      * @return продифференцируемый полином
      */
     public Polynomial differentiate(int order) {
-        int new_len = this.size - order;
-        int[] newArr = new int[new_len];
-        int temp_coef;
-        int temp_deg;
-        for (int i = 0; i < new_len; i++) {
-            temp_coef = this.coef[this.size - 1 - i];
-            temp_deg = this.size - 1 - i;
+        int newlen = this.size - order;
+        int[] newArr = new int[newlen];
+        int tempcoef;
+        int tempdeg;
+        for (int i = 0; i < newlen; i++) {
+            tempcoef = this.coef[this.size - 1 - i];
+            tempdeg = this.size - 1 - i;
             for (int j = 0; j < order; j++) {
-                temp_coef *= temp_deg;
-                temp_deg -= 1;
+                tempcoef *= tempdeg;
+                tempdeg -= 1;
             }
-            newArr[temp_deg] = temp_coef;
+            newArr[tempdeg] = tempcoef;
         }
         return new Polynomial(newArr);
     }
@@ -159,6 +165,7 @@ public class Polynomial {
 
     /**
      * реализицая сравнения двух полиномов.
+     *
      * @param obj второй обьект для сравнения
      * @return true/false
      */
@@ -169,25 +176,25 @@ public class Polynomial {
         }
         Polynomial b = (Polynomial) obj;
         // ищем максимальный индекс с ненулевым значением в полиноме а
-        int max_deg_a = 0;
+        int maxDegA = 0;
         for (int i = 0; i < this.size; i++) {
             if (this.coef[i] != 0) {
-                max_deg_a = i;
+                maxDegA = i;
             }
         }
         // ищем максимальный индекс с ненулевым значением в полиноме b
-        int max_deg_b = 0;
+        int maxDegB = 0;
         for (int i = 0; i < b.size; i++) {
             if (b.coef[i] != 0) {
-                max_deg_b = i;
+                maxDegB = i;
             }
         }
         // сравниеваем
-        if (max_deg_b != max_deg_a) {
+        if (maxDegB != maxDegA) {
             return false;
         }
 
-        for (int i = 0; i < max_deg_a; i++) {
+        for (int i = 0; i < maxDegA; i++) {
             if (this.coef[i] != b.coef[i]) {
                 return false;
             }
@@ -197,6 +204,7 @@ public class Polynomial {
 
     /**
      * функция получение строкового представления.
+     *
      * @return строку вида 4x^3 + 3x^2 + 6x + 7
      */
     @Override
