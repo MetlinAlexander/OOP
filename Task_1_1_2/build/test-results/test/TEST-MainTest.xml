@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-10-06T06:50:26" hostname="PC001171" time="0.085">
+<testsuite name="MainTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-10-06T06:59:38" hostname="PC001171" time="0.273">
   <properties/>
-  <testcase name="plus1test()" classname="MainTest" time="0.057"/>
-  <testcase name="simpleTest1()" classname="MainTest" time="0.002"/>
+  <testcase name="plus1test()" classname="MainTest" time="0.187"/>
+  <testcase name="simpleTest1()" classname="MainTest" time="0.001"/>
   <testcase name="simpleTest2()" classname="MainTest" time="0.001"/>
-  <testcase name="equalsTest1()" classname="MainTest" time="0.003"/>
-  <testcase name="equalsTest2()" classname="MainTest" time="0.001"/>
-  <testcase name="printtestZeroandOne()" classname="MainTest" time="0.001"/>
-  <testcase name="evaluatetest1()" classname="MainTest" time="0.002"/>
-  <testcase name="printtest1()" classname="MainTest" time="0.001"/>
+  <testcase name="equalsTest1()" classname="MainTest" time="0.01"/>
+  <testcase name="equalsTest2()" classname="MainTest" time="0.002"/>
+  <testcase name="printtestZeroandOne()" classname="MainTest" time="0.003"/>
+  <testcase name="evaluatetest1()" classname="MainTest" time="0.007"/>
+  <testcase name="printtest1()" classname="MainTest" time="0.005"/>
   <testcase name="minus1test()" classname="MainTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
