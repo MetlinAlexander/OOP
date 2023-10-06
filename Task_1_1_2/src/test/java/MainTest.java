@@ -6,10 +6,17 @@ import org.junit.jupiter.api.Test;
 class MainTest {
 
     @Test
-    void simpleTest1(){
+    void simpleTest1() {
         Polynomial p1 = new Polynomial(new int[] {4, 3, 6, 7});
         Polynomial p2 = new Polynomial(new int[] {3, 2, 8});
         Assertions.assertEquals("7x^3 + 6x^2 + 19x + 6", p1.plus(p2.differentiate(1)).toString());
+    }
+
+    @Test
+    void simpleTest2() {
+        Polynomial p1 = new Polynomial(new int[] {4, 3, 6, 7});
+        Polynomial p2 = new Polynomial(new int[] {3, 2, 8});
+        Assertions.assertEquals(3510, p1.times(p2).evaluate(2));
     }
 
     @Test
@@ -42,5 +49,19 @@ class MainTest {
     void evaluatetest1() {
         Polynomial p1 = new Polynomial(new int[] {4, 3, 6, 7});
         Assertions.assertEquals(90, p1.evaluate(2));
+    }
+
+    @Test
+    void equalsTest1() {
+        Polynomial p1 = new Polynomial(new int[] {4, 3, 6, 7});
+        Polynomial p2 = new Polynomial(new int[] {3, 2, 8});
+        Assertions.assertNotEquals(p1, p2);
+    }
+
+    @Test
+    void equalsTest2() {
+        Polynomial p1 = new Polynomial(new int[] {4, 3, 6, 7});
+        Polynomial p2 = new Polynomial(new int[] {4, 3, 6, 7, 0});
+        Assertions.assertEquals(p1, p2);
     }
 }

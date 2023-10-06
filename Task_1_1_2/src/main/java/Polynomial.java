@@ -1,5 +1,7 @@
-import java.util.Arrays;
-import java.util.Map;
+//import java.util.Arrays;
+//import java.util.Map;
+
+import java.util.Objects;
 
 /**
  * класс реализующий объектное представление многочлена степени n.
@@ -12,12 +14,6 @@ public class Polynomial {
 
     public static void main(String[] args) {
         System.out.print("Hello\n");
-        Polynomial p1 = new Polynomial(new int[] {4, 3, 6, 7});
-        Polynomial p2 = new Polynomial(new int[] {3, 2, 8});
-        System.out.println(p1);
-        System.out.println(p2);
-        System.out.println(p1.plus(p2.differentiate(1)).toString());
-        System.out.println(p1.times(p2).evaluate(2));
     }
 
     /**
@@ -25,7 +21,6 @@ public class Polynomial {
      * @param coef - массив коэффицентов
      */
     public Polynomial(int[] coef) {
-//        System.out.print(Arrays.toString(coef) + "\n");
         if (coef.length == 0) {
             System.out.println("Polynomial will be equals to 0.");
             this.size = 1;
@@ -38,7 +33,6 @@ public class Polynomial {
             }
         }
     }
-//    сложение, вычитание, умножение на другой многочлен;
 
     /**
      * метод для сложения двух полиномов.
@@ -80,6 +74,11 @@ public class Polynomial {
         return new Polynomial(newArr);
     }
 
+    /**
+     * функция выполняющая умножение двух полиномов.
+     * @param b - второй множитель
+     * @return произведение полиномов
+     */
     public Polynomial times(Polynomial b) {
         // ищем максимальный индекс с ненулевым значением в полиноме а
         int max_deg_a = 0;
@@ -98,15 +97,14 @@ public class Polynomial {
         // создаем новый полином с произведением
         int new_len = max_deg_a + max_deg_b + 1;
         int[] newArr = new int[new_len];
-        for (int i = 0; i<new_len; i++) {
+        for (int i = 0; i < new_len; i++) {
             newArr[i] = 0;
         }
         // выполняем умножение
-        for (int i = 0; i < max_deg_a+1; i++) {
-            for (int j = 0; j < max_deg_b+1; j++) {
-                newArr[i+j] += this.coef[i] * b.coef[j];
+        for (int i = 0; i < max_deg_a + 1; i++) {
+            for (int j = 0; j < max_deg_b + 1; j++) {
+                newArr[i + j] += this.coef[i] * b.coef[j];
             }
-//            System.out.print(Arrays.toString(newArr));
         }
         return new Polynomial(newArr);
     }
@@ -154,8 +152,48 @@ public class Polynomial {
         return new Polynomial(newArr);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(coef) * Objects.hashCode(size);
+    }
 
-//    сравнение на равенство с другим многочленом;
+    /**
+     * реализицая сравнения двух полиномов.
+     * @param obj второй обьект для сравнения
+     * @return true/false
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Polynomial)) {
+            return false;
+        }
+        Polynomial b = (Polynomial) obj;
+        // ищем максимальный индекс с ненулевым значением в полиноме а
+        int max_deg_a = 0;
+        for (int i = 0; i < this.size; i++) {
+            if (this.coef[i] != 0) {
+                max_deg_a = i;
+            }
+        }
+        // ищем максимальный индекс с ненулевым значением в полиноме b
+        int max_deg_b = 0;
+        for (int i = 0; i < b.size; i++) {
+            if (b.coef[i] != 0) {
+                max_deg_b = i;
+            }
+        }
+        // сравниеваем
+        if (max_deg_b != max_deg_a) {
+            return false;
+        }
+
+        for (int i = 0; i < max_deg_a; i++) {
+            if (this.coef[i] != b.coef[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
      * функция получение строкового представления.
