@@ -24,7 +24,7 @@ public class MainTest {
         while (myiterator.hasNext()) {
             fromBfs.add(myiterator.next().toString());
         }
-        String[] arr=new String[]{"R1","A","R2", "C", "D"};
+        String[] arr = new String[]{"R1", "A", "R2", "C", "D"};
         if (arr.length != fromBfs.size()) {
             Assertions.fail();
         }
@@ -52,7 +52,7 @@ public class MainTest {
             fromDfs.add(myiterator.next().toString());
         }
         System.out.print(fromDfs.toString());
-        String[] arr = new String[]{"R1","R2","D", "C", "A"};
+        String[] arr = new String[]{"R1", "R2", "D", "C", "A"};
         if (arr.length != fromDfs.size()) {
             Assertions.fail();
         }

@@ -19,23 +19,6 @@ public class Tree<T> {
     private int modifycount = 0;
 
     public static void main(String[] args) {
-        Tree<String> tree = new Tree<>("R1");
-        var a = tree.addChild("A");
-        var b = a.addChild("B");
-        Tree<String> subtree = new Tree<>("R2");
-        subtree.addChild("C");
-        subtree.addChild("D");
-        tree.addChild(subtree);
-        b.remove();
-        System.out.print(tree == subtree);
-
-        Tree<String> tree2 = new Tree<>("R1");
-        var d = tree2.addChild("A");
-        Tree<String> subtree2 = new Tree<>("R2");
-        subtree2.addChild("C");
-        subtree2.addChild("D");
-        tree2.addChild(subtree2);
-        System.out.print(tree.equals(tree2));
     }
 
     /**
@@ -191,12 +174,12 @@ public class Tree<T> {
      * @return dfs iterator
      */
     public Iterator<T> dfsiterator() {
-        return new DFSIterator<T>(this);
+        return new Dfsiterator<T>(this);
     }
-    class DFSIterator<T> implements Iterator<T> {
+    class Dfsiterator<T> implements Iterator<T> {
         private Stack<Tree<T>> stack;
         private int currentModCounter;
-        DFSIterator(Tree<T> root) {
+        Dfsiterator(Tree<T> root) {
             this.stack = new Stack<Tree<T>>();
             if (root.value != null) {
                 this.stack.push(root);
