@@ -14,10 +14,10 @@ public class MainTest {
         var a = tree.addChild("A");
         var b = a.addChild("B");
         Tree<String> subtree = new Tree<>("R2");
+        b.remove();
         subtree.addChild("C");
         subtree.addChild("D");
         tree.addChild(subtree);
-        b.remove();
 
         List<String> fromBfs = new ArrayList<>();
         Iterator myiterator = tree.iterator();
@@ -41,10 +41,10 @@ public class MainTest {
         var a = tree.addChild("A");
         var b = a.addChild("B");
         Tree<String> subtree = new Tree<>("R2");
+        b.remove();
         subtree.addChild("C");
         subtree.addChild("D");
         tree.addChild(subtree);
-        b.remove();
 
         List<String> fromDfs = new ArrayList<>();
         Iterator myiterator = tree.dfsiterator();
@@ -69,10 +69,10 @@ public class MainTest {
         var a = tree.addChild("A");
         var b = a.addChild("B");
         Tree<String> subtree = new Tree<>("R2");
+        b.remove();
         subtree.addChild("C");
         subtree.addChild("D");
         tree.addChild(subtree);
-        b.remove();
         Iterator myiteratordfs = tree.dfsiterator();
         var m = tree.addChild("m");
         assertThrows(ConcurrentModificationException.class, () -> {
@@ -86,10 +86,11 @@ public class MainTest {
         var a = tree.addChild("A");
         var b = a.addChild("B");
         Tree<String> subtree = new Tree<>("R2");
+        b.remove();
         subtree.addChild("C");
         subtree.addChild("D");
         tree.addChild(subtree);
-        b.remove();
+
         Iterator myiteratorbfs = tree.iterator();
         var m = tree.addChild("m");
         assertThrows(ConcurrentModificationException.class, () -> {
@@ -103,10 +104,10 @@ public class MainTest {
         var a = tree.addChild("A");
         var b = a.addChild("B");
         Tree<String> subtree = new Tree<>("R2");
+        b.remove();
         subtree.addChild("C");
         subtree.addChild("D");
         tree.addChild(subtree);
-        b.remove();
 
         Tree<String> tree2 = new Tree<>("R1");
         var d = tree2.addChild("A");
@@ -125,9 +126,9 @@ public class MainTest {
         var b = a.addChild("B");
         Tree<String> subtree = new Tree<>("R2");
         subtree.addChild("C");
+        b.remove();
         subtree.addChild("D");
         tree.addChild(subtree);
-        b.remove();
         assertNotEquals(tree, subtree);
     }
 
@@ -140,7 +141,6 @@ public class MainTest {
         subtree.addChild("C");
         subtree.addChild("D");
         tree.addChild(subtree);
-        b.remove();
         assertNotEquals(tree, null);
     }
 }
