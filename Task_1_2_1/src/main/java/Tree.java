@@ -65,7 +65,7 @@ public class Tree<T> {
     /**
      * add subtree to the tree.
      *
-     * @param subtree
+     * @param subtree subtree that should be added
      */
     public void addChild(Tree<T> subtree) {
         //update modification counter
@@ -132,14 +132,15 @@ public class Tree<T> {
     class BfsIterator<T> implements Iterator<T> {
         private Queue<Tree<T>> queue;
         private int currentModCounter;
+
         BfsIterator(Tree<T> root) {
             this.queue = new ArrayDeque<Tree<T>>();
             if (root.value != null) {
                 this.queue.add(root);
                 this.currentModCounter = root.modifycount;
             }
-
         }
+
         @Override
         public boolean hasNext() throws ConcurrentModificationException {
             if (currentModCounter != modifycount) {
@@ -179,6 +180,7 @@ public class Tree<T> {
     class Dfsiterator<T> implements Iterator<T> {
         private Stack<Tree<T>> stack;
         private int currentModCounter;
+
         Dfsiterator(Tree<T> root) {
             this.stack = new Stack<Tree<T>>();
             if (root.value != null) {
@@ -186,6 +188,7 @@ public class Tree<T> {
                 this.currentModCounter = root.modifycount;
             }
         }
+
         @Override
         public boolean hasNext() throws ConcurrentModificationException {
             if (currentModCounter != modifycount) {
