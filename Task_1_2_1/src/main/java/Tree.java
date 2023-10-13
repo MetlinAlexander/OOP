@@ -27,12 +27,15 @@ public class Tree<T> {
         subtree.addChild("D");
         tree.addChild(subtree);
         b.remove();
+        System.out.print(tree == subtree);
 
-        Iterator myiterator = tree.iterator();
-        while (myiterator.hasNext()) {
-            System.out.print(myiterator.next() + "\n");
-        }
-        System.out.print("Hello\n");
+        Tree<String> tree2 = new Tree<>("R1");
+        var d = tree2.addChild("A");
+        Tree<String> subtree2 = new Tree<>("R2");
+        subtree2.addChild("C");
+        subtree2.addChild("D");
+        tree2.addChild(subtree2);
+        System.out.print(tree.equals(tree2));
     }
 
     /**
@@ -105,6 +108,33 @@ public class Tree<T> {
         this.value = null;
     }
 
+    /**
+     * method to check trees equals.
+     *
+     * @param obj - second object to compare
+     * @return boolean answer true/false
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Tree)) {
+            return false;
+        }
+        if (this.value != ((Tree<?>) obj).value) {
+            return false;
+        }
+        Tree<T> secondTree = (Tree<T>) obj;
+        if (this.childrens.size() != secondTree.childrens.size()) {
+            return false;
+        }
+        Iterator<T> iterator1 = this.iterator();
+        Iterator<T> iterator2 = secondTree.iterator();
+        while (iterator1.hasNext() && iterator2.hasNext()) {
+            if (iterator1.next() != iterator2.next()) {
+                return false;
+            }
+        }
+        return true;
+    }
     //-------------------Iterators-----------------------
 
     /**
@@ -132,11 +162,7 @@ public class Tree<T> {
             if (currentModCounter != modifycount) {
                 throw new ConcurrentModificationException();
             }
-            if (this.queue.isEmpty()) {
-                return false;
-            } else {
-                return true;
-            }
+            return !this.queue.isEmpty();
         }
 
         @Override
@@ -159,4 +185,49 @@ public class Tree<T> {
         }
     }
 
+    /**
+     * default iterator using dfs.
+     *
+     * @return dfs iterator
+     */
+    public Iterator<T> dfsiterator() {
+        return new DFSIterator<T>(this);
+    }
+    class DFSIterator<T> implements Iterator<T> {
+        private Stack<Tree<T>> stack;
+        private int currentModCounter;
+        DFSIterator(Tree<T> root) {
+            this.stack = new Stack<Tree<T>>();
+            if (root.value != null) {
+                this.stack.push(root);
+                this.currentModCounter = root.modifycount;
+            }
+        }
+        @Override
+        public boolean hasNext() throws ConcurrentModificationException {
+            if (currentModCounter != modifycount) {
+                throw new ConcurrentModificationException();
+            }
+            return (!this.stack.isEmpty());
+        }
+
+        @Override
+        public T next() throws NoSuchElementException {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            Tree<T> cur = this.stack.pop();
+            for (int i = 0; i < cur.childrens.size(); i++) {
+                if (cur.childrens.get(i).value != null) {
+                    this.stack.push(cur.childrens.get(i));
+                }
+            }
+            return cur.value;
+        }
+
+        @Override
+        public void remove() throws ConcurrentModificationException {
+            throw new ConcurrentModificationException();
+        }
+    }
 }
