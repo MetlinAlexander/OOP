@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 
 public class MainTest {
     @Test
@@ -30,7 +28,7 @@ public class MainTest {
         if (arr.length != fromBfs.size()) {
             Assertions.fail();
         }
-        for (int i = 0; i<arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             if (fromBfs.get(i) != arr[i]) {
                 Assertions.fail();
             }
@@ -54,11 +52,11 @@ public class MainTest {
             fromDfs.add(myiterator.next().toString());
         }
         System.out.print(fromDfs.toString());
-        String[] arr=new String[]{"R1","R2","D", "C", "A"};
+        String[] arr = new String[]{"R1","R2","D", "C", "A"};
         if (arr.length != fromDfs.size()) {
             Assertions.fail();
         }
-        for (int i = 0; i<arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             if (fromDfs.get(i) != arr[i]) {
                 Assertions.fail();
             }
@@ -131,5 +129,18 @@ public class MainTest {
         tree.addChild(subtree);
         b.remove();
         assertNotEquals(tree, subtree);
+    }
+
+    @Test
+    void nullequalstest1() {
+        Tree<String> tree = new Tree<>("R1");
+        var a = tree.addChild("A");
+        var b = a.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+        b.remove();
+        assertNotEquals(tree, null);
     }
 }
