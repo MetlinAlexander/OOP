@@ -155,7 +155,6 @@ public class AdjacencyList<T> implements Graph<T> {
             dist.put(entry.getKey(), myInf);
             mark.put(entry.getKey(), 0);
         }
-
         dist.put(verS.getValue(), 0);
         mark.put(verS.getValue(), 1);
         int min;
