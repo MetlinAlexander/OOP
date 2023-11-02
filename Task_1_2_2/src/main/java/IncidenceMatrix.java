@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IncidenceMatrix<T> implements Graph<T> {
+
     /**
      * матрица инцедентности.
      * если из вершины v1 выходит ребро e1,

@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AdjacencyMatrix<T> implements Graph<T> {
+
     /**
      * матрица смежности.
      */

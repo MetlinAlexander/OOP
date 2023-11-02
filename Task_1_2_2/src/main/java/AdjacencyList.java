@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AdjacencyList<T> implements Graph<T> {
+
     /**
      * список смежности.
      */

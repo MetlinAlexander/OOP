@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f30288f-1f54-4d5f-9c0d-0fd2db839786" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AdjacencyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdjacencyList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AdjacencyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdjacencyMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GraphReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IncidenceMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IncidenceMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GraphTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GraphTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +57,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Gradle.Task_1_2_2 [build]">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Task_1_2_2.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GraphTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -96,6 +95,30 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;GraphTests.testAdjacencyList&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="GraphTests.testAdjacencyMatrix" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;GraphTests.testAdjacencyMatrix&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -154,11 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GraphTests" />
-        <item itemvalue="Gradle.GraphTests.testIncidenceMatrix" />
-        <item itemvalue="Gradle.GraphTests.testAdjacencyList" />
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Gradle.Task_1_2_2 [build]" />
+        <item itemvalue="Gradle.GraphTests.testIncidenceMatrix" />
+        <item itemvalue="Gradle.GraphTests.testAdjacencyMatrix" />
+        <item itemvalue="Gradle.GraphTests.testAdjacencyList" />
+        <item itemvalue="Gradle.GraphTests" />
       </list>
     </recent_temporary>
   </component>

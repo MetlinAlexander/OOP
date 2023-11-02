@@ -43,6 +43,7 @@ public class Edge<T> {
      *
      * @return вершина из которой исходит
      */
+
     public Vertex<T> getFrom() {
         return this.from;
     }
@@ -51,6 +52,7 @@ public class Edge<T> {
      *
      * @return вершина из которой исходит
      */
+
     public Vertex<T> getTo() {
         return this.to;
     }
