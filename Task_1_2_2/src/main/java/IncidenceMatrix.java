@@ -2,11 +2,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdjacencyList<T> implements Graph<T> {
+public class IncidenceMatrix<T> implements Graph<T> {
     /**
-     * список смежности.
+     * матрица инцедентности.
+     * если из вершины v1 выходит ребро e1,
+     * то в матрице инцедентности будет вес этого ребра,
+     * если нет, то будет -1;
      */
-    private HashMap<T, HashMap<T, Integer>> adjList;
+    private HashMap<T, HashMap<Edge<T>, Integer>> incMatrix;
 
     /**
      * список вершин.
@@ -19,10 +22,10 @@ public class AdjacencyList<T> implements Graph<T> {
     private ArrayList<Edge<T>> edgeList;
 
     /**
-     * конструктор графа в виде списка смежности.
+     * конструктор графа в виде матрицы инцедентности.
      */
-    AdjacencyList() {
-        this.adjList = new HashMap<>();
+    IncidenceMatrix() {
+        this.incMatrix = new HashMap<>();
         this.vertexList = new HashMap<>();
         this.edgeList = new ArrayList<>();
     }
@@ -37,12 +40,12 @@ public class AdjacencyList<T> implements Graph<T> {
     }
 
     /**
-     * возвращает список смежности.
+     * возвращает матрицу инцедентности.
      *
      * @return список смежности.
      */
-    public HashMap<T, HashMap<T, Integer>> getAdjList() {
-        return adjList;
+    public HashMap<T, HashMap<Edge<T>, Integer>> getIncMatrix() {
+        return incMatrix;
     }
 
     /**
@@ -61,7 +64,10 @@ public class AdjacencyList<T> implements Graph<T> {
      */
     public void addVertex(Vertex<T> vertex) {
         vertexList.put(vertex.getValue(), vertex);
-        adjList.put(vertex.getValue(), new HashMap<>());
+        incMatrix.put(vertex.getValue(), new HashMap<>());
+        for (int i = 0; i < edgeList.size(); i++) {
+            incMatrix.get(vertex.getValue()).put(edgeList.get(i), -1);
+        }
     }
 
     /**
@@ -73,7 +79,7 @@ public class AdjacencyList<T> implements Graph<T> {
         //проверям есть ли такая вершина у нас
         if (vertexList.containsKey(vertex.getValue())) {
             vertexList.remove(vertex.getValue());
-            adjList.remove(vertex.getValue());
+            incMatrix.remove(vertex.getValue());
             //ищем какие ребра надо удалить вместе с этой вершиной
             ArrayList<Edge<T>> toDelete = new ArrayList<>();
             for (Edge<T> curEdge : edgeList) {
@@ -86,13 +92,6 @@ public class AdjacencyList<T> implements Graph<T> {
             //удаляем все ребра инцидентные этой вершине
             for (Edge<T> curEdge : toDelete) {
                 edgeList.remove(curEdge);
-            }
-            //удаляем информацию о  вершине из списка смежности
-            for (Map.Entry<T, HashMap<T, Integer>> entry : adjList.entrySet()) {
-                HashMap<T, Integer> curList = entry.getValue();
-                if (curList.containsKey(vertex.getValue())) {
-                    curList.remove(vertex.getValue());
-                }
             }
         }
     }
@@ -110,9 +109,12 @@ public class AdjacencyList<T> implements Graph<T> {
             return;
         }
         this.edgeList.add(edge);
-        HashMap<T, Integer> curList = adjList.get(edge.getFrom().getValue());
-        if (!curList.containsKey(edge.getTo())) {
-            curList.put(edge.getTo().getValue(), edge.getWeight());
+        for (Map.Entry<T, HashMap<Edge<T>, Integer>> entry : incMatrix.entrySet()) {
+            if (entry.getKey() == edge.getFrom().getValue()) {
+                entry.getValue().put(edge, edge.getWeight());
+            } else {
+                entry.getValue().put(edge, -1);
+            }
         }
     }
 
@@ -126,8 +128,11 @@ public class AdjacencyList<T> implements Graph<T> {
             return;
         }
         this.edgeList.remove(edge);
-        HashMap<T, Integer> curList = adjList.get(edge.getFrom().getValue());
-        curList.remove(edge.getTo().getValue());
+        for (Map.Entry<T, HashMap<Edge<T>, Integer>> entry : incMatrix.entrySet()) {
+            if (entry.getValue().containsKey(edge)) {
+                entry.getValue().remove(edge);
+            }
+        }
     }
 
     /**
@@ -150,7 +155,7 @@ public class AdjacencyList<T> implements Graph<T> {
         int myInf = 1000000000;
         HashMap<T, Integer> dist = new HashMap<>();
         HashMap<T, Integer> mark = new HashMap<>();
-        // 0 -> white, 1-grey, 2 black
+//        // 0 -> white, 1-grey, 2 black
         for (Map.Entry<T, Vertex<T>> entry : vertexList.entrySet()) {
             dist.put(entry.getKey(), myInf);
             mark.put(entry.getKey(), 0);
@@ -160,7 +165,7 @@ public class AdjacencyList<T> implements Graph<T> {
         mark.put(verS.getValue(), 1);
         int min;
         Vertex<T> u;
-
+        T tempVertex;
         while (true) {
             min = myInf;
             u = null;
@@ -175,15 +180,18 @@ public class AdjacencyList<T> implements Graph<T> {
             }
             mark.put(u.getValue(), 2);
 
-            HashMap<T, Integer> curList = adjList.get(u.getValue());
-            for (Map.Entry<T, Integer> entry : curList.entrySet()) {
-                if (dist.get(entry.getKey()) > (dist.get(u.getValue()) + entry.getValue())) {
-                    dist.put(entry.getKey(), dist.get(u.getValue()) + curList.get(entry.getKey()));
-                    mark.put(entry.getKey(), 1);
+            HashMap<Edge<T>, Integer> curList = incMatrix.get(u.getValue());
+            for (Map.Entry<Edge<T>, Integer> entry : curList.entrySet()) {
+                tempVertex = entry.getKey().getTo().getValue();
+                if (entry.getValue() == -1) {
+                    continue;
+                }
+                if (dist.get(tempVertex) > (dist.get(u.getValue()) + entry.getValue())) {
+                    dist.put(tempVertex, dist.get(u.getValue()) + entry.getValue());
+                    mark.put(tempVertex, 1);
                 }
             }
         }
         return dist;
     }
 }
-
