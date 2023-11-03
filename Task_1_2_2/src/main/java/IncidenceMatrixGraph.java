@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * класс для работы с графом в виде матрице инцедентности.
+ *
+ * @param <T> тип данных в вершинах и ребрах графа.
+ */
 public class IncidenceMatrixGraph<T> implements Graph<T> {
 
     /**
@@ -156,7 +161,7 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
         int myInf = 1000000000;
         HashMap<T, Integer> dist = new HashMap<>();
         HashMap<T, Integer> mark = new HashMap<>();
-//        // 0 -> white, 1-grey, 2 black
+        // 0 -> white, 1-grey, 2 black
         for (Map.Entry<T, Vertex<T>> entry : vertexList.entrySet()) {
             dist.put(entry.getKey(), myInf);
             mark.put(entry.getKey(), 0);

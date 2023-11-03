@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * класс для работы с графом в виде матрице смежности.
+ *
+ * @param <T> тип данных в вершинах и ребрах графа.
+ */
 public class AdjacencyMatrixGraph<T> implements Graph<T> {
 
     /**
