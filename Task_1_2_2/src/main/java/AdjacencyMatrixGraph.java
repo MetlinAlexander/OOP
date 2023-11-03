@@ -2,15 +2,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IncidenceMatrix<T> implements Graph<T> {
+public class AdjacencyMatrixGraph<T> implements Graph<T> {
 
     /**
-     * матрица инцедентности.
-     * если из вершины v1 выходит ребро e1,
-     * то в матрице инцедентности будет вес этого ребра,
-     * если нет, то будет -1;
+     * матрица смежности.
      */
-    private HashMap<T, HashMap<Edge<T>, Integer>> incMatrix;
+    private HashMap<T, HashMap<T, Integer>> adjMatrix;
 
     /**
      * список вершин.
@@ -23,10 +20,10 @@ public class IncidenceMatrix<T> implements Graph<T> {
     private ArrayList<Edge<T>> edgeList;
 
     /**
-     * конструктор графа в виде матрицы инцедентности.
+     * конструктор графа в виде матрицы смежности.
      */
-    IncidenceMatrix() {
-        this.incMatrix = new HashMap<>();
+    AdjacencyMatrixGraph() {
+        this.adjMatrix = new HashMap<>();
         this.vertexList = new HashMap<>();
         this.edgeList = new ArrayList<>();
     }
@@ -41,12 +38,12 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     /**
-     * возвращает матрицу инцедентности.
+     * возвращает матрицу смежности.
      *
      * @return список смежности.
      */
-    public HashMap<T, HashMap<Edge<T>, Integer>> getIncMatrix() {
-        return incMatrix;
+    public HashMap<T, HashMap<T, Integer>> getAdjMatrix() {
+        return adjMatrix;
     }
 
     /**
@@ -65,9 +62,10 @@ public class IncidenceMatrix<T> implements Graph<T> {
      */
     public void addVertex(Vertex<T> vertex) {
         vertexList.put(vertex.getValue(), vertex);
-        incMatrix.put(vertex.getValue(), new HashMap<>());
-        for (int i = 0; i < edgeList.size(); i++) {
-            incMatrix.get(vertex.getValue()).put(edgeList.get(i), -1);
+        adjMatrix.put(vertex.getValue(), new HashMap<>());
+        for (Map.Entry<T, Vertex<T>> entry : vertexList.entrySet()) {
+            adjMatrix.get(vertex.getValue()).put(entry.getKey(), 0);
+            adjMatrix.get(entry.getKey()).put(vertex.getValue(), 0);
         }
     }
 
@@ -80,7 +78,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
         //проверям есть ли такая вершина у нас
         if (vertexList.containsKey(vertex.getValue())) {
             vertexList.remove(vertex.getValue());
-            incMatrix.remove(vertex.getValue());
+            adjMatrix.remove(vertex.getValue());
             //ищем какие ребра надо удалить вместе с этой вершиной
             ArrayList<Edge<T>> toDelete = new ArrayList<>();
             for (Edge<T> curEdge : edgeList) {
@@ -93,6 +91,13 @@ public class IncidenceMatrix<T> implements Graph<T> {
             //удаляем все ребра инцидентные этой вершине
             for (Edge<T> curEdge : toDelete) {
                 edgeList.remove(curEdge);
+            }
+            //удаляем информацию о  вершине из матрицы смежности
+            for (Map.Entry<T, HashMap<T, Integer>> entry : adjMatrix.entrySet()) {
+                HashMap<T, Integer> curList = entry.getValue();
+                if (curList.containsKey(vertex.getValue())) {
+                    curList.remove(vertex.getValue());
+                }
             }
         }
     }
@@ -110,12 +115,9 @@ public class IncidenceMatrix<T> implements Graph<T> {
             return;
         }
         this.edgeList.add(edge);
-        for (Map.Entry<T, HashMap<Edge<T>, Integer>> entry : incMatrix.entrySet()) {
-            if (entry.getKey() == edge.getFrom().getValue()) {
-                entry.getValue().put(edge, edge.getWeight());
-            } else {
-                entry.getValue().put(edge, -1);
-            }
+        HashMap<T, Integer> curList = adjMatrix.get(edge.getFrom().getValue());
+        if (!curList.containsKey(edge.getTo())) {
+            curList.put(edge.getTo().getValue(), edge.getWeight());
         }
     }
 
@@ -129,11 +131,8 @@ public class IncidenceMatrix<T> implements Graph<T> {
             return;
         }
         this.edgeList.remove(edge);
-        for (Map.Entry<T, HashMap<Edge<T>, Integer>> entry : incMatrix.entrySet()) {
-            if (entry.getValue().containsKey(edge)) {
-                entry.getValue().remove(edge);
-            }
-        }
+        HashMap<T, Integer> curList = adjMatrix.get(edge.getFrom().getValue());
+        curList.put(edge.getTo().getValue(), 0);
     }
 
     /**
@@ -156,7 +155,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
         int myInf = 1000000000;
         HashMap<T, Integer> dist = new HashMap<>();
         HashMap<T, Integer> mark = new HashMap<>();
-//        // 0 -> white, 1-grey, 2 black
+        // 0 -> white, 1-grey, 2 black
         for (Map.Entry<T, Vertex<T>> entry : vertexList.entrySet()) {
             dist.put(entry.getKey(), myInf);
             mark.put(entry.getKey(), 0);
@@ -166,7 +165,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
         mark.put(verS.getValue(), 1);
         int min;
         Vertex<T> u;
-        T tempVertex;
+
         while (true) {
             min = myInf;
             u = null;
@@ -181,15 +180,14 @@ public class IncidenceMatrix<T> implements Graph<T> {
             }
             mark.put(u.getValue(), 2);
 
-            HashMap<Edge<T>, Integer> curList = incMatrix.get(u.getValue());
-            for (Map.Entry<Edge<T>, Integer> entry : curList.entrySet()) {
-                tempVertex = entry.getKey().getTo().getValue();
-                if (entry.getValue() == -1) {
+            HashMap<T, Integer> curList = adjMatrix.get(u.getValue());
+            for (Map.Entry<T, Integer> entry : curList.entrySet()) {
+                if (entry.getValue() == 0) {
                     continue;
                 }
-                if (dist.get(tempVertex) > (dist.get(u.getValue()) + entry.getValue())) {
-                    dist.put(tempVertex, dist.get(u.getValue()) + entry.getValue());
-                    mark.put(tempVertex, 1);
+                if (dist.get(entry.getKey()) > (dist.get(u.getValue()) + entry.getValue())) {
+                    dist.put(entry.getKey(), dist.get(u.getValue()) + curList.get(entry.getKey()));
+                    mark.put(entry.getKey(), 1);
                 }
             }
         }

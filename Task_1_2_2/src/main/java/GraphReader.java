@@ -13,7 +13,7 @@ public class GraphReader {
      * @param filename имя файла.
      * @return граф в виде списка смежности.
      */
-    public static AdjacencyList<String> readAdjacencyList(String filename) {
+    public static AdjacencyListGraph<String> readAdjacencyList(String filename) {
         Scanner fileScanner;
         try {
             fileScanner = new Scanner(new FileReader(filename));
@@ -21,7 +21,7 @@ public class GraphReader {
             throw new RuntimeException(e);
         }
 
-        AdjacencyList<String> g1 = new AdjacencyList<String>();
+        AdjacencyListGraph<String> g1 = new AdjacencyListGraph<String>();
 
         int numVer = 0;
         int numEdge = 0;
@@ -60,7 +60,7 @@ public class GraphReader {
      * @param filename имя файла.
      * @return граф в виде матрицы смежности.
      */
-    public static AdjacencyMatrix<String> readAdjacencyMatrix(String filename) {
+    public static AdjacencyMatrixGraph<String> readAdjacencyMatrix(String filename) {
         Scanner fileScanner;
         try {
             fileScanner = new Scanner(new FileReader(filename));
@@ -68,7 +68,7 @@ public class GraphReader {
             throw new RuntimeException(e);
         }
 
-        AdjacencyMatrix<String> g1 = new AdjacencyMatrix<String>();
+        AdjacencyMatrixGraph<String> g1 = new AdjacencyMatrixGraph<String>();
 
         int numVer = 0;
         int numEdge = 0;
@@ -107,7 +107,7 @@ public class GraphReader {
      * @param filename имя файла.
      * @return граф в виде матрицы инцедентности.
      */
-    public static IncidenceMatrix<String> readIncidenceMatrix(String filename) {
+    public static IncidenceMatrixGraph<String> readIncidenceMatrix(String filename) {
         Scanner fileScanner;
         try {
             fileScanner = new Scanner(new FileReader(filename));
@@ -115,7 +115,7 @@ public class GraphReader {
             throw new RuntimeException(e);
         }
 
-        IncidenceMatrix<String> g1 = new IncidenceMatrix<>();
+        IncidenceMatrixGraph<String> g1 = new IncidenceMatrixGraph<>();
 
         int numVer = 0;
         int numEdge = 0;

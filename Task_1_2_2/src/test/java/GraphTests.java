@@ -8,7 +8,7 @@ public class GraphTests {
 
     @Test
     public void testAdjacencyList() {
-        AdjacencyList<String> g1 = GraphReader.readAdjacencyList("src/main/java/graph.txt");
+        AdjacencyListGraph<String> g1 = GraphReader.readAdjacencyList("src/main/java/graph.txt");
 
         Vertex<String> v5 = new Vertex<>("v5");
         g1.addVertex(v5);
@@ -31,7 +31,7 @@ public class GraphTests {
 
     @Test
     public void testAdjacencyMatrix() {
-        AdjacencyMatrix<String> g1 = GraphReader.readAdjacencyMatrix("src/main/java/graph.txt");
+        AdjacencyMatrixGraph<String> g1 = GraphReader.readAdjacencyMatrix("src/main/java/graph.txt");
         Vertex<String> v5 = new Vertex<>("v5");
         g1.addVertex(v5);
         Edge<String> e5 = new Edge<>(v5, g1.getVertexByValue("v1"), 10);
@@ -53,7 +53,7 @@ public class GraphTests {
 
     @Test
     public void testIncidenceMatrix() {
-        IncidenceMatrix<String> g1 = GraphReader.readIncidenceMatrix("src/main/java/graph.txt");
+        IncidenceMatrixGraph<String> g1 = GraphReader.readIncidenceMatrix("src/main/java/graph.txt");
         HashMap<String, Vertex<String>> verList = g1.getVertexList();
         ArrayList<Edge<String>> edList = g1.getEdgeList();
         HashMap<String, HashMap<Edge<String>, Integer>> adjList = g1.getIncMatrix();
