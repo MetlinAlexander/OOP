@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2f30288f-1f54-4d5f-9c0d-0fd2db839786" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AdjacencyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdjacencyList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AdjacencyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdjacencyMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Edge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GraphReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GraphReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IncidenceMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IncidenceMatrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/GraphTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GraphTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +51,7 @@
       <command value="gradle build" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Task_1_2_2 [build]">
+  <component name="RunManager" selected="Gradle.GraphTests.testIncidenceMatrix">
     <configuration name="GraphTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -177,8 +172,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Task_1_2_2 [build]" />
         <item itemvalue="Gradle.GraphTests.testIncidenceMatrix" />
+        <item itemvalue="Gradle.Task_1_2_2 [build]" />
         <item itemvalue="Gradle.GraphTests.testAdjacencyMatrix" />
         <item itemvalue="Gradle.GraphTests.testAdjacencyList" />
         <item itemvalue="Gradle.GraphTests" />
@@ -209,5 +204,6 @@
     <SUITE FILE_PATH="coverage/Task_1_2_2$Main__1_.ic" NAME="Main (1) Coverage Results" MODIFIED="1698914922405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Task_1_2_2$GraphTests_testAdjacencyList.ic" NAME="GraphTests.testAdjacencyList Coverage Results" MODIFIED="1698919686962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Task_1_2_2$GraphTests.ic" NAME="GraphTests Coverage Results" MODIFIED="1698940780365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Task_1_2_2$GraphTests_testIncidenceMatrix.ic" NAME="GraphTests.testIncidenceMatrix Coverage Results" MODIFIED="1698981532204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

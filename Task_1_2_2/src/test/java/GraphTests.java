@@ -57,7 +57,10 @@ public class GraphTests {
         HashMap<String, Vertex<String>> verList = g1.getVertexList();
         ArrayList<Edge<String>> edList = g1.getEdgeList();
         HashMap<String, HashMap<Edge<String>, Integer>> adjList = g1.getIncMatrix();
+        Vertex<String> v5 = new Vertex<>("v5");
         HashMap<String, Integer> distance = g1.dijkstra(g1.getVertexByValue("v0"));
+        g1.addVertex(v5);
+        g1.removeVertex(g1.getVertexByValue("v5"));
         Assertions.assertEquals(distance.get("v0"), 0);
         Assertions.assertEquals(distance.get("v1"), 2);
         Assertions.assertEquals(distance.get("v2"), 5);
