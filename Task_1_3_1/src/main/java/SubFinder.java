@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-class SubFinder {
+public class SubFinder {
     /**
      * метод реализующий поиск всех подстрок в данной строке
      * а также определяющий индекс начала каждого вхождения заданной подстроки.
