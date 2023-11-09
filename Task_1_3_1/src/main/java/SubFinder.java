@@ -1,8 +1,12 @@
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
+/**
+ * класс в котором реадизован метод для поиска подстроик в строке.
+ *
+ */
 public class SubFinder {
     /**
      * метод реализующий поиск всех подстрок в данной строке
