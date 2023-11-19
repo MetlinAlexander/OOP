@@ -2,11 +2,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class MainTest{
+public class MainTest {
     private static GradeBook goodStudent = new GradeBook();
 
     @BeforeAll
-    static void setUp(){
+    static void setUp() {
         Semester sem1 = new Semester(1);
         Subject peLesson = new Subject("PE", Grade.FOUR);
         Subject imperative = new Subject("imperative", Grade.FIFE);
