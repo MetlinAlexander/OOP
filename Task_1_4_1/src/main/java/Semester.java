@@ -44,8 +44,8 @@ public class Semester {
      * @return средний балл
      */
     public double getAverage() {
-        double ans = this.subjArr.stream().
-                mapToInt(x -> x.getGrades().value)
+        double ans = this.subjArr.stream()
+                .mapToInt(x -> x.getGrades().value)
                 .average().getAsDouble();
         return ans;
     }

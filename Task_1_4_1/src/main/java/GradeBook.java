@@ -35,9 +35,9 @@ public class GradeBook {
      * @return средний балл
      */
     public double getAverageMark() {
-        double ans = allSemesters.stream().
-                mapToDouble(x -> x.getAverage()).
-                average().getAsDouble();
+        double ans = allSemesters.stream()
+                .mapToDouble(x -> x.getAverage())
+                .average().getAsDouble();
         return ans;
     }
 
@@ -49,10 +49,10 @@ public class GradeBook {
     public boolean isRedDiplomPossible() {
         HashMap<String, Grade> lastGrades = new HashMap<>();
         for (int i = 0; i < lastSemester; i++) {
-            allSemesters.get(i).getSubjArr().
-                    stream().
-                    forEach(x -> lastGrades.
-                            put(x.getSubjectName(), x.getGrades()));
+            allSemesters.get(i).getSubjArr()
+                    .stream()
+                    .forEach(x -> lastGrades
+                            .put(x.getSubjectName(), x.getGrades()));
         }
         int fifes = 0;
         int fours = 0;
@@ -64,8 +64,8 @@ public class GradeBook {
             }
         }
 
-        boolean noThree = allSemesters.stream().
-                allMatch(Semester::isStipendPossible);
+        boolean noThree = allSemesters.stream()
+                .allMatch(Semester::isStipendPossible);
 
         return (noThree
                 &
