@@ -45,8 +45,8 @@ public class Semester {
      */
     public double getAverage() {
         double ans = this.subjArr.stream().
-                mapToInt(x -> x.getGrades().value).
-                average().getAsDouble();
+                mapToInt(x -> x.getGrades().value)
+                .average().getAsDouble();
         return ans;
     }
 }

@@ -28,17 +28,17 @@ public class MainTest{
     }
 
     @Test
-    void testAverage(){
+    void testAverage() {
         Assertions.assertEquals(4.583333333333334, goodStudent.getAverageMark());
     }
 
     @Test
-    void testStipend(){
+    void testStipend() {
         assert(goodStudent.isStipendPossible());
     }
 
     @Test
-    void testRedDiploma(){
+    void testRedDiploma() {
         assert(goodStudent.isRedDiplomPossible());
     }
 }
