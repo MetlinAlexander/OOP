@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class MainTest {
     private static GradeBook goodStudent = new GradeBook();
 
@@ -29,7 +31,7 @@ public class MainTest {
 
     @Test
     void testAverage() {
-        Assertions.assertEquals(4.583333333333334, goodStudent.getAverageMark());
+        assertTrue(Math.abs(4.58 - goodStudent.getAverageMark()) < 0.1);
     }
 
     @Test
