@@ -1,16 +1,6 @@
 import java.util.Stack;
 
 public class Calculator {
-    public static void main(String[] args) {
-        System.out.println("Hi calculator ");
-        try {
-            System.out.println("ans: " + Calculator.evaluator("pow log 11 sqrt * 13 cos - 6 1"));
-        }
-        catch (Exception ex){
-            System.out.println("something wrong");
-        }
-
-    }
 
     private static double[] pop2ToDouble(Stack<Double> numStack){
         double[] numbers = new double[2];
@@ -27,15 +17,11 @@ public class Calculator {
             throws WrongPolishNotationException,
             WrongFunctionArgumentException
     {
-        double ans = 0;
+        double ans;
         String[] atoms = expression.split(" ");
         Stack<Double> numStack = new Stack<>();
-
-        System.out.println(expression);
         double[] nums;
         for(int i = atoms.length - 1; i>=0; i--) {
-            System.out.println(atoms[i]);
-
             // сначала пытаемся понять является ли текущий атом какой-то операцией
             //(+, -,*, /) (log, pow, sqrt, sin, cos).
             switch (atoms[i]) {
