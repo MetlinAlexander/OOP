@@ -3,7 +3,13 @@ import java.util.Stack;
 public class Calculator {
     public static void main(String[] args) {
         System.out.println("Hi calculator ");
-        System.out.println("ans: " + Calculator.evaluator("pow 12 log 11 sqrt * 13 cos - 6 1"));
+        try {
+            System.out.println("ans: " + Calculator.evaluator("pow log 11 sqrt * 13 cos - 6 1"));
+        }
+        catch (Exception ex){
+            System.out.println("something wrong");
+        }
+
     }
 
     private static double[] pop2ToDouble(Stack<Double> numStack){
@@ -17,7 +23,10 @@ public class Calculator {
         return numStack.pop();
     }
 
-    public static double evaluator(String expression) {
+    public static double evaluator(String expression)
+            throws WrongPolishNotationException,
+            WrongFunctionArgumentException
+    {
         double ans = 0;
         String[] atoms = expression.split(" ");
         Stack<Double> numStack = new Stack<>();
@@ -28,7 +37,7 @@ public class Calculator {
             System.out.println(atoms[i]);
 
             // сначала пытаемся понять является ли текущий атом какой-то операцией
-            //(+, -,*, /), поддержите набор функций (log, pow, sqrt, sin, cos).
+            //(+, -,*, /) (log, pow, sqrt, sin, cos).
             switch (atoms[i]) {
                 case "+":
                     nums = pop2ToDouble(numStack);
@@ -63,12 +72,19 @@ public class Calculator {
                 case "cos":
                     numStack.push(Math.cos(pop1ToDouble(numStack)));
                     break;
-
-                // если не подошла не одна операция, значит это число, либо выкидаем exception
+                // если не подошла не одна операция, значит это число, либо выкидываем exception
                 default:
-                    numStack.push(Double.parseDouble(atoms[i]));
+                    try {
+                        numStack.push(Double.parseDouble(atoms[i]));
+                    } catch (Exception ex){
+                        throw new WrongFunctionArgumentException();
+                    }
             }
         }
-        return numStack.pop();
+        ans = numStack.pop();
+        if(!numStack.isEmpty()) {
+            throw new WrongPolishNotationException();
+        }
+        return ans;
     }
 }
