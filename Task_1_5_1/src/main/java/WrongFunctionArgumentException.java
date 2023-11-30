@@ -1,2 +1,2 @@
-public class WrongFunctionArgumentException extends Exception{
+public class WrongFunctionArgumentException extends Exception {
 }

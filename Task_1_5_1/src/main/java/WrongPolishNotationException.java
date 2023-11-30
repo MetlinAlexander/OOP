@@ -1,2 +1,2 @@
-public class WrongPolishNotationException extends Exception{
+public class WrongPolishNotationException extends Exception {
 }
