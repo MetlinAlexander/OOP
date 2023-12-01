@@ -90,13 +90,15 @@ public class Calculator {
                     try {
                         numStack.push(Double.parseDouble(atoms[i]));
                     } catch (Exception ex) {
-                        throw new WrongFunctionArgumentException();
+                        throw new WrongFunctionArgumentException(
+                                "Wrong arguments");
                     }
             }
         }
         ans = numStack.pop();
         if (!numStack.isEmpty()) {
-            throw new WrongPolishNotationException();
+            throw new WrongPolishNotationException(
+                    "something wrong with Polish notation");
         }
         return ans;
     }
