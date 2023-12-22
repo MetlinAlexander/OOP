@@ -1,12 +1,16 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import java.io.*;
+import org.apache.commons.cli.*;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import org.apache.commons.cli.*;
 
 /**
  * класс для работы с командной строкой
@@ -21,11 +25,11 @@ public class Main {
         File file = new File(path);
         NoteBook notebook;
         if (file.exists()) {
-            Gson gson = new GsonBuilder().
-                    setDateFormat("dd.MM.yyyy H:mm").create();
+            Gson gson = new GsonBuilder()
+                    .setDateFormat("dd.MM.yyyy H:mm").create();
             Type typeToken = new TypeToken<NoteBook>() { }.getType();
-            notebook = gson.
-                    fromJson(new FileReader(path), typeToken);
+            notebook = gson
+                    .fromJson(new FileReader(path), typeToken);
             if (notebook == null) {
                 notebook = new NoteBook();
             }
@@ -70,8 +74,8 @@ public class Main {
             }
         }
         // сериализуем данные обратно в json
-        Gson gsonFinal = new GsonBuilder().
-                setDateFormat("dd.MM.yyyy H:mm").create();
+        Gson gsonFinal = new GsonBuilder()
+                .setDateFormat("dd.MM.yyyy H:mm").create();
         try (FileWriter writer = new FileWriter(path)) {
             gsonFinal.toJson(notebook, writer);
         } catch (IOException e) {

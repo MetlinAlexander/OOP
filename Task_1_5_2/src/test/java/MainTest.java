@@ -1,11 +1,14 @@
 import org.apache.commons.cli.ParseException;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MainTest {
 
@@ -25,8 +28,8 @@ class MainTest {
         Main.main(new String[]{"-add", "note2", "hello world"});
 
         Main.main(new String[]{"-show"});
-        String[] actual = output.toString().
-                replace("\r", "").split("\n");
+        String[] actual = output.toString()
+                .replace("\r", "").split("\n");
         assertEquals(actual[0], "Title: note1");
         assertEquals(actual[1], "content: text hi");
 
@@ -39,7 +42,8 @@ class MainTest {
 
         Main.main(new String[]{"-show"});
 
-        actual = output.toString().replace("\r", "").split("\n");
+        actual = output.toString()
+                .replace("\r", "").split("\n");
         output.reset();
         assertEquals(actual[0], "");
     }
@@ -50,9 +54,9 @@ class MainTest {
         Main.main(new String[]{"-add", "note1", "text hi"});
         Main.main(new String[]{"-add", "note2", "hello world"});
 
-        Main.main(new String[]{"-show", "22.12.2023 20:00", "31.12.2023 20:14", "note1"});
-        String[] actual = output.toString().
-                replace("\r", "").split("\n");
+        Main.main(new String[]{"-show", "0.0.2000 20:00", "31.12.2030 20:14", "note1"});
+        String[] actual = output.toString()
+                .replace("\r", "").split("\n");
         assertEquals(actual[0], "Title: note1");
         assertEquals(actual[1], "content: text hi");
         output.reset();
