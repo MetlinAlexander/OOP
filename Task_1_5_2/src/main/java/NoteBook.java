@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.Date;
 
 /**
- * класс реализующий обьект типа записная книжка
+ * класс реализующий обьект типа записная книжка.
  */
 public class NoteBook {
 
