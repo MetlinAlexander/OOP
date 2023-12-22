@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import org.apache.commons.cli.*;
 
 /**
- * класс для работы с командной строкой
+ * класс для работы с командной строкой.
  * а также для сохранения/загрузки в/из json
  */
 public class Main {
@@ -20,10 +20,10 @@ public class Main {
     /**
      * метод который вызываем для работы с записной книжкой.
      *
-     * @param args
-     * @throws IOException
-     * @throws ParseException
-     * @throws java.text.ParseException
+     * @param args аргументы командной строки
+     * @throws IOException ошибка при сохранении в json
+     * @throws ParseException ошибка при parse даты
+     * @throws java.text.ParseException ошибка при чтении json
      */
     public static void main(String[] args)
             throws IOException, ParseException, java.text.ParseException {
