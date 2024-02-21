@@ -16,12 +16,20 @@ public final class Primes {
      * @param number - number to check
      * @return true if number is prime
      */
-    public static boolean isPrime(final int number) {
-        for (int i = 2; i <= Math.sqrt(number); i++) {
+    public static boolean isPrime(final long number) {
+        for (long i = 2; i * i <= number; i++) {
             if (number % i == 0) {
                 return false;
             }
         }
         return true;
     }
+
+//    public static void main(String[] args) {
+//        for (long i = 10000000469L; i < 10000111469L; i++){
+//            if(isPrime(i)){
+//                System.out.print(i + "L, ");
+//            }
+//        }
+//    }
 }

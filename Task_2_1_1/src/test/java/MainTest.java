@@ -2,26 +2,30 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /*
-последовательное вычисление: 1300
-
+ParallelStream: 421
+MultiThread2: 473
+MultiThread3: 387
+MultiThread4: 422
+MultiThread5: 353
+MultiThread6: 301
+Sequential: 643
  */
 
 class MainTest {
 
-    final int[] array1 = new int[]{6, 8, 7, 13, 5, 9, 4};
-    final int[] array2 = new int[]{
-            5, 53, 157, 173, 211, 257,
-            263, 373, 563, 593, 607,
-            653, 733, 947, 977, 1103,
-            1123, 1187, 1223, 1367,
-            1511, 1747, 1753, 1907,
-            2287, 2417, 2677, 2903,
-            2963, 3307, 3313, 3637,
-            3733, 4013, 4409, 4457,
-            4597, 4657, 4691, 4993,
-            5107, 5113, 5303, 5387,
-            5393, 29084449};
-
+    final long[] array1 = new long[]{6, 8, 7, 13, 5, 9, 4};
+    final long[] array2 = new long[]{
+            20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
+            6998009, 6998029, 6998039, 20165149, 6998051, 6998053,
+            1000000007, 1000000007, 1000000009, 1000000009,
+            10000000469L, 10000000501L, 10000000537L, 10000000583L,
+            10000000589L, 10000000597L, 10000000601L, 10000000631L,
+            10000000643L, 10000000649L, 10000000667L, 10000000679L,
+            10000000469L, 10000000501L, 10000000537L, 10000000583L,
+            10000000589L, 10000000597L, 10000000601L, 10000000631L,
+            10000000643L, 10000000649L, 10000000667L, 10000000679L
+    };
+    
     @Test
     public void testSequentialArray1() {
         assertTrue(SequentialCalc.consistNotPrime(array1));
@@ -32,13 +36,50 @@ class MainTest {
         long begin, end;
         boolean res = true;
         begin = System.currentTimeMillis();
-        for (int i = 0; i < 100000; i++){
+        for (int i = 0; i < 100; i++){
             res = SequentialCalc.consistNotPrime(array2);
         }
         end = System.currentTimeMillis();
         System.out.println("Sequential: " + (end - begin));
-        assertTrue(res);
+        assertFalse(res);
     }
 
+    @Test
+    public void testParallelStreamArray1() {
+        assertTrue(ParallelStreamCalc.consistNotPrime(array1));
+    }
 
+    @Test
+    public void testParallelStreamWithTime() {
+        long begin, end;
+        boolean res = true;
+        begin = System.currentTimeMillis();
+        for (int i = 0; i < 100; i++){
+            res = ParallelStreamCalc.consistNotPrime(array2);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("ParallelStream: " + (end - begin));
+        assertFalse(res);
+    }
+
+    @Test
+    public void testMultiThreadArray1() throws InterruptedException {
+        assertTrue(MultiThreadCalc.consistNotPrime(array1, 3));
+
+    }
+
+    @Test
+    public void testMultiThreadWithTime() throws InterruptedException {
+        long begin, end;
+        boolean res = true;
+        for(int cnThread = 2; cnThread <= 6; cnThread++){
+            begin = System.currentTimeMillis();
+            for (int i = 0; i < 100; i++){
+                res = MultiThreadCalc.consistNotPrime(array2, cnThread);
+            }
+            end = System.currentTimeMillis();
+            System.out.println("MultiThread" + cnThread + ": "+ (end - begin));
+        }
+        assertFalse(res);
+    }
 }
