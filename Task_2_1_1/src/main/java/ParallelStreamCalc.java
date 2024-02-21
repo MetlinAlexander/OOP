@@ -12,7 +12,7 @@ public class ParallelStreamCalc {
      * @return true if consists not Prime
      */
     public static boolean consistNotPrime(final long[] arr) {
-        return Arrays.stream(arr).parallel().
-                anyMatch(num -> !Primes.isPrime(num));
+        return Arrays.stream(arr).parallel()
+                .anyMatch(num -> !Primes.isPrime(num));
     }
 }

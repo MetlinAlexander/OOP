@@ -25,7 +25,7 @@ class MainTest {
             10000000589L, 10000000597L, 10000000601L, 10000000631L,
             10000000643L, 10000000649L, 10000000667L, 10000000679L
     };
-    
+
     @Test
     public void testSequentialArray1() {
         assertTrue(SequentialCalc.consistNotPrime(array1));
@@ -33,10 +33,11 @@ class MainTest {
 
     @Test
     public void testSequentialWithTime() {
-        long begin, end;
+        long begin;
+        long end;
         boolean res = true;
         begin = System.currentTimeMillis();
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             res = SequentialCalc.consistNotPrime(array2);
         }
         end = System.currentTimeMillis();
@@ -51,10 +52,11 @@ class MainTest {
 
     @Test
     public void testParallelStreamWithTime() {
-        long begin, end;
+        long begin;
+        long end;
         boolean res = true;
         begin = System.currentTimeMillis();
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             res = ParallelStreamCalc.consistNotPrime(array2);
         }
         end = System.currentTimeMillis();
@@ -70,15 +72,16 @@ class MainTest {
 
     @Test
     public void testMultiThreadWithTime() throws InterruptedException {
-        long begin, end;
+        long begin;
+        long end;
         boolean res = true;
-        for(int cnThread = 2; cnThread <= 6; cnThread++){
+        for (int cnThread = 2; cnThread <= 6; cnThread++) {
             begin = System.currentTimeMillis();
-            for (int i = 0; i < 100; i++){
+            for (int i = 0; i < 100; i++) {
                 res = MultiThreadCalc.consistNotPrime(array2, cnThread);
             }
             end = System.currentTimeMillis();
-            System.out.println("MultiThread" + cnThread + ": "+ (end - begin));
+            System.out.println("MultiThread" + cnThread + ": " + (end - begin));
         }
         assertFalse(res);
     }

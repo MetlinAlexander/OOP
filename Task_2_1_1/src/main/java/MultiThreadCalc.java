@@ -13,7 +13,7 @@ public class MultiThreadCalc {
      * @param arr array to check.
      * @param threadsValue количество потоков
      * @return true if consists Not prime
-     * @throws InterruptedException
+     * @throws InterruptedException ошибка прерывания.
      */
     public static boolean consistNotPrime(final long[] arr,
                                           final int threadsValue)
