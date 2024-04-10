@@ -1,0 +1,24 @@
+{
+  "storageSize": 5,
+  "workingTime": 240,
+  "bakers": [
+    {
+      "name": "Baker1",
+      "bakingTime": 40
+    },
+    {
+      "name": "Baker2",
+      "bakingTime": 60
+    }
+  ],
+  "couries": [
+    {
+      "name": "cour1",
+      "bagCap": 1
+    },
+    {
+      "name": "cour2",
+      "bagCap": 2
+    }
+  ]
+}

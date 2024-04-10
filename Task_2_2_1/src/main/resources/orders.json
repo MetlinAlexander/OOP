@@ -1,0 +1,18 @@
+[
+  {
+    "address": "Pirogova 1",
+    "deleveryTime": 10
+  },
+  {
+    "address": "Ivanova 35",
+    "deleveryTime": 100
+  },
+  {
+    "address": "Catalina 22",
+    "deleveryTime": 33
+  },
+  {
+    "address": "Arbuzova 12/5",
+    "deleveryTime": 76
+  }
+]
