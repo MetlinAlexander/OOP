@@ -1,4 +1,4 @@
-package myPizzeria;
+package pizzeriapack;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -99,7 +99,7 @@ public class Pizzeria {
     /**
      * typical working day of pizzeria.
      */
-    void PizzeriaDay() {
+    public void PizzeriaDay() {
         try {
             StartWorkingDay();
             logger.info("Pizzeria start working");

@@ -1,4 +1,4 @@
-package myPizzeria;
+package pizzeriapack;
 
 /**
  * class for order object.

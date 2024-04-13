@@ -1,4 +1,4 @@
-package myPizzeria;
+package pizzeriapack;
 
 import java.util.ArrayList;
 import java.util.Random;

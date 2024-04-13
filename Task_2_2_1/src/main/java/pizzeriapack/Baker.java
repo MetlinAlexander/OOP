@@ -1,6 +1,6 @@
-package myPizzeria;
+package pizzeriapack;
 
-import static myPizzeria.Pizzeria.logger;
+import static pizzeriapack.Pizzeria.logger;
 
 /**
  * class for bakers.

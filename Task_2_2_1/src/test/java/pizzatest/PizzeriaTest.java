@@ -1,9 +1,12 @@
-package myPizzeria;
+package pizzatest;
 
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
+import pizzeriapack.Client;
+import pizzeriapack.Order;
+import pizzeriapack.Pizzeria;
 import utils.JsonReader;
 
 class PizzeriaTest {

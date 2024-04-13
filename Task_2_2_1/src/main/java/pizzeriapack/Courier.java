@@ -1,7 +1,7 @@
-package myPizzeria;
+package pizzeriapack;
 
 import java.util.ArrayList;
-import static myPizzeria.Pizzeria.logger;
+import static pizzeriapack.Pizzeria.logger;
 
 /**
  * class for couriers.
