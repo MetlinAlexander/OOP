@@ -1,8 +1,8 @@
 package pizzatest;
 
-import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 import pizzeriapack.Client;
 import pizzeriapack.Order;
@@ -16,10 +16,10 @@ class PizzeriaTest {
         ArrayList<Order> orders = JsonReader.ordersRead("src/main/resources/orders.json");
         Pizzeria pizzeria = JsonReader.readPizzeria("src/main/resources/workers.json");
         Thread pizzeriaThread = new Thread(() -> {
-            pizzeria.PizzeriaDay();
+            pizzeria.pizzeriaDay();
         });
         Thread clientThread = new Thread(() -> {
-            Client.RequestRandomOrders(pizzeria, orders, 50);
+            Client.requestRandomOrders(pizzeria, orders, 50);
         });
 
 

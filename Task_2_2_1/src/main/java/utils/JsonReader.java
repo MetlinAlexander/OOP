@@ -1,9 +1,5 @@
 package utils;
 
-import pizzeriapack.Baker;
-import pizzeriapack.Courier;
-import pizzeriapack.Order;
-import pizzeriapack.Pizzeria;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.io.FileReader;
@@ -11,6 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import pizzeriapack.Baker;
+import pizzeriapack.Courier;
+import pizzeriapack.Order;
+import pizzeriapack.Pizzeria;
 
 /**
  * Utility class for reading pizzeria config json files.

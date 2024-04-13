@@ -23,7 +23,7 @@ public final class Client {
      * @param orders all possible orders
      * @param maxWait interval between new order
      */
-    public static void RequestRandomOrders(final Pizzeria pizzeria,
+    public static void requestRandomOrders(final Pizzeria pizzeria,
                                            final ArrayList<Order> orders,
                                            final int maxWait) {
         while (!Thread.interrupted()) {

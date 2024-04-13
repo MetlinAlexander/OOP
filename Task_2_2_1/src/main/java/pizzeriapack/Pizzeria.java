@@ -52,7 +52,7 @@ public class Pizzeria {
      * The working day begins with the opening of the pizzeria.
      * Then all the workers start working
      */
-    void StartWorkingDay() {
+    void startWorkingDay() {
         isOpen.set(true);
         for (Baker baker : bakers) {
             baker.setWorkPlace(this);
@@ -69,9 +69,10 @@ public class Pizzeria {
      * Then the bakers finish all the orders and stop working.
      * And then the couriers
      * take all the remaining orders and stop working.
+     *
      * @throws InterruptedException exception
      */
-    void ClosePizzeria() throws InterruptedException {
+    void closePizzeria() throws InterruptedException {
         isOpen.set(false);
 
         toBake.waitEmpty();
@@ -99,14 +100,14 @@ public class Pizzeria {
     /**
      * typical working day of pizzeria.
      */
-    public void PizzeriaDay() {
+    public void pizzeriaDay() {
         try {
-            StartWorkingDay();
+            startWorkingDay();
             logger.info("Pizzeria start working");
             Thread.sleep(workingTime);
             logger.info(
                     "Pizzeria preparing to close and stop taking new orders");
-            ClosePizzeria();
+            closePizzeria();
             logger.info("Pizzeria closed");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
