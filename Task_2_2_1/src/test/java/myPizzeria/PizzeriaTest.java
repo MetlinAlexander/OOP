@@ -2,12 +2,9 @@ package myPizzeria;
 
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
-import utils.JsonReader;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
+import utils.JsonReader;
 
 class PizzeriaTest {
 

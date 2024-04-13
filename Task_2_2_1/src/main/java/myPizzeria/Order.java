@@ -1,5 +1,8 @@
 package myPizzeria;
 
+/**
+ * class for order object.
+ */
 public class Order {
     private String address;
     private int deleveryTime;

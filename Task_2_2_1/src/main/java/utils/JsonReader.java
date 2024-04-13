@@ -7,11 +7,10 @@ import myPizzeria.Pizzeria;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.json.simple.parser.ParseException;
 
 /**
  * Utility class for reading pizzeria config json files.
@@ -28,8 +27,6 @@ public final class JsonReader {
      *
      * @param path path to the file
      * @return ArrayList of order objects
-     * @throws IOException
-     * @throws ParseException
      */
     public static ArrayList<Order> ordersRead(final String path)
             throws IOException, ParseException {

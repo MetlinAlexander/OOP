@@ -9,6 +9,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * class for pizzeria.
+ */
 public class Pizzeria {
     private ArrayList<Baker> bakers;
     private ArrayList<Courier> couriers;

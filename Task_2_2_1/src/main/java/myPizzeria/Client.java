@@ -3,6 +3,9 @@ package myPizzeria;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * class to imitate clients.
+ */
 public final class Client {
 
     private static final Random random = new Random();

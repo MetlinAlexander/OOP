@@ -3,6 +3,9 @@ package myPizzeria;
 import java.util.ArrayList;
 import static myPizzeria.Pizzeria.logger;
 
+/**
+ * class for couriers.
+ */
 public class Courier extends Thread {
     private String name;
     private int bagCap;

@@ -2,6 +2,9 @@ package myPizzeria;
 
 import static myPizzeria.Pizzeria.logger;
 
+/**
+ * class for bakers.
+ */
 public class Baker extends Thread {
     private String name;
     private int bakingTime;
