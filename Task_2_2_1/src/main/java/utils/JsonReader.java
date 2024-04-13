@@ -6,10 +6,10 @@ import myPizzeria.Order;
 import myPizzeria.Pizzeria;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -28,8 +28,7 @@ public final class JsonReader {
      * @param path path to the file
      * @return ArrayList of order objects
      */
-    public static ArrayList<Order> ordersRead(final String path)
-            throws IOException, ParseException {
+    public static ArrayList<Order> ordersRead(final String path) {
         ArrayList<Order> orders = new ArrayList<>();
         JSONParser parser = new JSONParser();
 

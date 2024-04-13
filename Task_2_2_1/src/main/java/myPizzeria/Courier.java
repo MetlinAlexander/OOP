@@ -40,8 +40,8 @@ public class Courier extends Thread {
         while (!Thread.interrupted()
                 && (workPlace.isOpen.get() || !workPlace.toDeliver.isEmpty())) {
             try {
-                ArrayList<Order> orders = workPlace.toDeliver.
-                        getSome(this.bagCap);
+                ArrayList<Order> orders = workPlace.toDeliver
+                        .getSome(this.bagCap);
                 int totalTimeSleep = 0;
                 StringBuffer totalBag = new StringBuffer();
                 for (int i = 0; i < orders.size(); i++) {

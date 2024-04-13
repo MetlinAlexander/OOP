@@ -29,8 +29,8 @@ public final class Client {
         while (!Thread.interrupted()) {
             try {
                 Thread.sleep(random.nextInt(maxWait) + 1);
-                boolean ans = pizzeria.
-                        getOrder(orders.get(random.nextInt(orders.size())));
+                boolean ans = pizzeria
+                        .getOrder(orders.get(random.nextInt(orders.size())));
                 if (!ans) {
                     return;
                 }

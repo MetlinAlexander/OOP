@@ -1,13 +1,11 @@
 package myPizzeria;
 
-import utils.MySynhronizedQueue;
-
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import utils.MySynhronizedQueue;
 
 /**
  * class for pizzeria.
@@ -71,7 +69,7 @@ public class Pizzeria {
      * Then the bakers finish all the orders and stop working.
      * And then the couriers
      * take all the remaining orders and stop working.
-     * @throws InterruptedException
+     * @throws InterruptedException exception
      */
     void ClosePizzeria() throws InterruptedException {
         isOpen.set(false);

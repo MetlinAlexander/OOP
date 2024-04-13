@@ -23,10 +23,10 @@ public class MySynhronizedQueue<T> {
     }
 
     /**
-     * Add element to the queue.
-     * Wait until queue is < maxCapacity
+     * add element to queue.
      *
      * @param elem element to add
+     * @throws InterruptedException exception
      */
     public synchronized void add(final T elem) throws InterruptedException {
         while (queue.size() == maxCapacity) {
@@ -41,6 +41,7 @@ public class MySynhronizedQueue<T> {
      * Wait until queue is not empty.
      *
      * @return removed element
+     * @throws InterruptedException exception
      */
     public synchronized T get() throws InterruptedException {
         while (queue.isEmpty()) {
@@ -71,6 +72,8 @@ public class MySynhronizedQueue<T> {
 
     /**
      * method to wait when queue is become empty.
+     *
+     * @throws InterruptedException exception
      */
     public synchronized void waitEmpty() throws InterruptedException {
         while (!queue.isEmpty()) {

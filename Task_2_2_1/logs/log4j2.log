@@ -281,3 +281,54 @@
 2024-04-14 00:04:48,405 INFO m.Pizzeria [Thread-6] Courier Borisov delivered orders: |6
 2024-04-14 00:04:48,406 INFO m.Pizzeria [Thread-8] Couriers finished delevired everything!
 2024-04-14 00:04:48,406 INFO m.Pizzeria [Thread-8] Pizzeria closed
+2024-04-14 00:19:18,785 INFO m.Pizzeria [Thread-8] Pizzeria start working
+2024-04-14 00:19:18,809 INFO m.Pizzeria [Thread-4] Baker Elizar has started to cook order 0
+2024-04-14 00:19:18,809 INFO m.Pizzeria [Thread-9] Order 0 is added to queue
+2024-04-14 00:19:18,823 INFO m.Pizzeria [Thread-9] Order 1 is added to queue
+2024-04-14 00:19:18,823 INFO m.Pizzeria [Thread-5] Baker Maxim has started to cook order 1
+2024-04-14 00:19:18,851 INFO m.Pizzeria [Thread-4] Baker Elizar already cooked order 0
+2024-04-14 00:19:18,851 INFO m.Pizzeria [Thread-4] Baker Elizar move order 0 to storage
+2024-04-14 00:19:18,851 INFO m.Pizzeria [Thread-6] Courier Borisov start deliver orders: |0
+2024-04-14 00:19:18,864 INFO m.Pizzeria [Thread-4] Baker Elizar has started to cook order 2
+2024-04-14 00:19:18,864 INFO m.Pizzeria [Thread-9] Order 2 is added to queue
+2024-04-14 00:19:18,874 INFO m.Pizzeria [Thread-9] Order 3 is added to queue
+2024-04-14 00:19:18,886 INFO m.Pizzeria [Thread-5] Baker Maxim already cooked order 1
+2024-04-14 00:19:18,886 INFO m.Pizzeria [Thread-5] Baker Maxim move order 1 to storage
+2024-04-14 00:19:18,887 INFO m.Pizzeria [Thread-5] Baker Maxim has started to cook order 3
+2024-04-14 00:19:18,887 INFO m.Pizzeria [Thread-6] Courier Borisov delivered orders: |0
+2024-04-14 00:19:18,886 INFO m.Pizzeria [Thread-7] Courier Chehov start deliver orders: |1
+2024-04-14 00:19:18,906 INFO m.Pizzeria [Thread-4] Baker Elizar already cooked order 2
+2024-04-14 00:19:18,907 INFO m.Pizzeria [Thread-4] Baker Elizar move order 2 to storage
+2024-04-14 00:19:18,907 INFO m.Pizzeria [Thread-6] Courier Borisov start deliver orders: |2
+2024-04-14 00:19:18,912 INFO m.Pizzeria [Thread-9] Order 4 is added to queue
+2024-04-14 00:19:18,912 INFO m.Pizzeria [Thread-4] Baker Elizar has started to cook order 4
+2024-04-14 00:19:18,948 INFO m.Pizzeria [Thread-5] Baker Maxim already cooked order 3
+2024-04-14 00:19:18,948 INFO m.Pizzeria [Thread-5] Baker Maxim move order 3 to storage
+2024-04-14 00:19:18,954 INFO m.Pizzeria [Thread-9] Order 5 is added to queue
+2024-04-14 00:19:18,954 INFO m.Pizzeria [Thread-5] Baker Maxim has started to cook order 5
+2024-04-14 00:19:18,954 INFO m.Pizzeria [Thread-4] Baker Elizar already cooked order 4
+2024-04-14 00:19:18,955 INFO m.Pizzeria [Thread-4] Baker Elizar move order 4 to storage
+2024-04-14 00:19:18,965 INFO m.Pizzeria [Thread-7] Courier Chehov delivered orders: |1
+2024-04-14 00:19:18,965 INFO m.Pizzeria [Thread-7] Courier Chehov start deliver orders: |5|4
+2024-04-14 00:19:18,978 INFO m.Pizzeria [Thread-9] Order 6 is added to queue
+2024-04-14 00:19:18,978 INFO m.Pizzeria [Thread-4] Baker Elizar has started to cook order 6
+2024-04-14 00:19:19,005 INFO m.Pizzeria [Thread-9] Order 7 is added to queue
+2024-04-14 00:19:19,007 INFO m.Pizzeria [Thread-6] Courier Borisov delivered orders: |2
+2024-04-14 00:19:19,010 INFO m.Pizzeria [Thread-7] Courier Chehov delivered orders: |5|4
+2024-04-14 00:19:19,016 INFO m.Pizzeria [Thread-5] Baker Maxim already cooked order 5
+2024-04-14 00:19:19,016 INFO m.Pizzeria [Thread-5] Baker Maxim move order 5 to storage
+2024-04-14 00:19:19,016 INFO m.Pizzeria [Thread-6] Courier Borisov start deliver orders: |5
+2024-04-14 00:19:19,017 INFO m.Pizzeria [Thread-5] Baker Maxim has started to cook order 7
+2024-04-14 00:19:19,020 INFO m.Pizzeria [Thread-4] Baker Elizar already cooked order 6
+2024-04-14 00:19:19,020 INFO m.Pizzeria [Thread-4] Baker Elizar move order 6 to storage
+2024-04-14 00:19:19,020 INFO m.Pizzeria [Thread-7] Courier Chehov start deliver orders: |6
+2024-04-14 00:19:19,028 INFO m.Pizzeria [Thread-6] Courier Borisov delivered orders: |5
+2024-04-14 00:19:19,035 INFO m.Pizzeria [Thread-8] Pizzeria preparing to close and stop taking new orders
+2024-04-14 00:19:19,084 INFO m.Pizzeria [Thread-5] Baker Maxim already cooked order 7
+2024-04-14 00:19:19,085 INFO m.Pizzeria [Thread-5] Baker Maxim move order 7 to storage
+2024-04-14 00:19:19,085 INFO m.Pizzeria [Thread-6] Courier Borisov start deliver orders: |7
+2024-04-14 00:19:19,085 INFO m.Pizzeria [Thread-8] Bakers finished cook everything!
+2024-04-14 00:19:19,097 INFO m.Pizzeria [Thread-7] Courier Chehov delivered orders: |6
+2024-04-14 00:19:19,121 INFO m.Pizzeria [Thread-6] Courier Borisov delivered orders: |7
+2024-04-14 00:19:19,122 INFO m.Pizzeria [Thread-8] Couriers finished delevired everything!
+2024-04-14 00:19:19,123 INFO m.Pizzeria [Thread-8] Pizzeria closed
