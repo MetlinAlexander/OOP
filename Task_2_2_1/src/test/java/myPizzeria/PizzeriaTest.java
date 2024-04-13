@@ -15,24 +15,17 @@ class PizzeriaTest {
     void runTest() throws IOException, ParseException, InterruptedException {
         ArrayList<Order> orders = JsonReader.ordersRead("src/main/resources/orders.json");
         Pizzeria pizzeria = JsonReader.readPizzeria("src/main/resources/workers.json");
-        var pizzeriaThread = new Thread(() -> {
-            try {
-                pizzeria.workingDay();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        Thread pizzeriaThread = new Thread(() -> {
+            pizzeria.PizzeriaDay();
         });
-        var clientThread = new Thread(() -> {
-            try {
-                new Client(pizzeria, orders);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        Thread clientThread = new Thread(() -> {
+            Client.RequestRandomOrders(pizzeria, orders, 50);
         });
+
 
         pizzeriaThread.start();
         clientThread.start();
-        clientThread.join();
         pizzeriaThread.join();
+        clientThread.interrupt();
     }
 }

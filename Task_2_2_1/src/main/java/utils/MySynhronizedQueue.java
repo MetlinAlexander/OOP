@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Queue;
 
 /**
@@ -52,11 +53,53 @@ public class MySynhronizedQueue<T> {
         return elem;
     }
 
-    public synchronized boolean isEmpty(){
+    /**
+     * method to check queue is Empty.
+     *
+     * @return true if empty, else false.
+     */
+    public synchronized boolean isEmpty() {
         return queue.isEmpty();
     }
 
+    /**
+     * method to get len of queue.
+     *
+     * @return len of queue.
+     */
     public int getMaxCapacity() {
-        return maxCapacity;
+        return queue.size();
+    }
+
+    /**
+     * method to wait when queue is become empty.
+     *
+     * @throws InterruptedException
+     */
+    public synchronized void waitEmpty() throws InterruptedException {
+        while (!queue.isEmpty()) {
+            wait();
+        }
+    }
+
+    /**
+     * Method to get more than one element from queue.
+     *
+     * @param amount - how manu elements to pop
+     * @return list of elements
+     * @throws InterruptedException
+     */
+    public synchronized ArrayList<T> getSome(int amount)
+            throws InterruptedException {
+        while (queue.isEmpty()) {
+            wait();
+        }
+        ArrayList<T> ans = new ArrayList<>();
+        while (!queue.isEmpty() && amount > 0) {
+            ans.add(queue.poll());
+            amount -= 1;
+        }
+        notifyAll();
+        return ans;
     }
 }

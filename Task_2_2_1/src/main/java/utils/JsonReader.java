@@ -9,15 +9,30 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 
-public class JsonReader {
+/**
+ * Utility class for reading pizzeria config json files.
+ */
+public final class JsonReader {
 
-    public static ArrayList<Order> ordersRead(String path) throws IOException, ParseException {
+    /**
+     * private constrictor for utility class.
+     */
+    private JsonReader() { }
+
+    /**
+     * Methot to read data from orders.json.
+     *
+     * @param path path to the file
+     * @return ArrayList of order objects
+     * @throws IOException
+     * @throws ParseException
+     */
+    public static ArrayList<Order> ordersRead(final String path)
+            throws IOException, ParseException {
         ArrayList<Order> orders = new ArrayList<>();
         JSONParser parser = new JSONParser();
 
@@ -32,10 +47,8 @@ public class JsonReader {
 
                 //чтение данных из JSON объекта
                 String address = (String) jsonObject.get("address");
-                long deliveryTime = (long) jsonObject.get("deleveryTime"); // Преобразование к числовому типу
+                long deliveryTime = (long) jsonObject.get("deleveryTime");
                 orders.add(new Order(address, (int) deliveryTime));
-                //вывод данных
-                System.out.println("Address: " + address + ", Delivery Time: " + deliveryTime);
             }
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -43,7 +56,13 @@ public class JsonReader {
         return orders;
     }
 
-    public static Pizzeria readPizzeria(String path){
+    /**
+     * Method to read data from workers.json.
+     *
+     * @param path path to the file
+     * @return pizzeria object
+     */
+    public static Pizzeria readPizzeria(final String path) {
         ArrayList<Baker> bakers = new ArrayList<>();
         ArrayList<Courier> couriers = new ArrayList<>();
         long storageSize = 0;
@@ -58,35 +77,31 @@ public class JsonReader {
             storageSize = (long) jsonObject.get("storageSize");
             workingTime = (long) jsonObject.get("workingTime");
 
-            System.out.println("Storage Size: " + storageSize);
-            System.out.println("Working Time: " + workingTime);
-
             //Чтение списка пекарей
             JSONArray bakersArray = (JSONArray) jsonObject.get("bakers");
-            System.out.println("Bakers:");
             for (Object bakerObj : bakersArray) {
                 JSONObject baker = (JSONObject) bakerObj;
                 String name = (String) baker.get("name");
                 long bakingTime = (long) baker.get("bakingTime");
                 bakers.add(new Baker(name, (int) bakingTime));
-                System.out.println("- Name: " + name + ", Baking Time: " + bakingTime);
             }
 
             //Чтение списка курьеров
             JSONArray couriersArray = (JSONArray) jsonObject.get("couries");
-            System.out.println("Couriers:");
             for (Object courierObj : couriersArray) {
                 JSONObject courier = (JSONObject) courierObj;
                 String name = (String) courier.get("name");
                 long bagCapacity = (long) courier.get("bagCap");
                 couriers.add(new Courier(name, (int) bagCapacity));
-                System.out.println("- Name: " + name + ", Bag Capacity: " + bagCapacity);
             }
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        return new Pizzeria((int) workingTime, (int) storageSize, bakers, couriers);
+        return new Pizzeria((int) workingTime,
+                            (int) storageSize,
+                            bakers,
+                            couriers);
     }
 
 }

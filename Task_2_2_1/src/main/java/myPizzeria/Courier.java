@@ -1,48 +1,58 @@
 package myPizzeria;
 
 import java.util.ArrayList;
+import static myPizzeria.Pizzeria.logger;
 
-public class Courier extends Thread{
+public class Courier extends Thread {
     private String name;
     private int bagCap;
 
     private Pizzeria workPlace;
 
-    public Courier(String name, int bagCap){
+    /**
+     * constuctor for courier.
+     *
+     * @param name name of courier
+     * @param bagCap capacity of bag
+     */
+    public Courier(final String name, final int bagCap) {
         this.name = name;
         this.bagCap = bagCap;
     }
 
-    public void setWorkPlace(Pizzeria workPlace) {
+    /**
+     * set place where courier work.
+     *
+     * @param workPlace where courier work
+     */
+    public void setWorkPlace(final Pizzeria workPlace) {
         this.workPlace = workPlace;
     }
 
+    /**
+     * run method for courier thread.
+     */
     @Override
     public void run() {
-        while (!isInterrupted()) {
-            int totalDeliveryTime = 0;
-            ArrayList<Order> pickedOrders = new ArrayList<>();
+        while (!Thread.interrupted()
+                && (workPlace.isOpen.get() || !workPlace.toDeliver.isEmpty())) {
             try {
-                int amountOfPickedPizzas = this.bagCap;
-                int count = workPlace.toDeliver.getMaxCapacity();
-                while (!workPlace.isOpen.get()) {
-                    if (count < bagCap && (count != 0)) {
-                        amountOfPickedPizzas = count;
-                        break;
-                    }
-                    count = workPlace.toDeliver.getMaxCapacity();
+                ArrayList<Order> orders = workPlace.toDeliver.
+                        getSome(this.bagCap);
+                int totalTimeSleep = 0;
+                StringBuffer totalBag = new StringBuffer();
+                for (int i = 0; i < orders.size(); i++) {
+                    totalTimeSleep += orders.get(i).getDeleveryTime();
+                    totalBag.append("|");
+                    totalBag.append(orders.get(i).getOrderId());
                 }
-
-                for (int i = 0; i < amountOfPickedPizzas; i++) {
-                    Order order = workPlace.toDeliver.get();
-                    pickedOrders.add(order);
-                    totalDeliveryTime += order.getDeleveryTime();
-                }
-
-                Thread.sleep(totalDeliveryTime);
-                workPlace.delevered.getAndAdd(pickedOrders.size());
+                logger.info("Courier {} start deliver orders: {}",
+                        this.name, totalBag);
+                Thread.sleep(totalTimeSleep);
+                logger.info("Courier {} delivered orders: {}",
+                        this.name, totalBag);
             } catch (InterruptedException e) {
-
+                return;
             }
         }
     }

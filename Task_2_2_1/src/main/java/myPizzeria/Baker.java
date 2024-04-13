@@ -1,31 +1,52 @@
 package myPizzeria;
 
-public class Baker extends Thread{
+import static myPizzeria.Pizzeria.logger;
+
+public class Baker extends Thread {
     private String name;
     private int bakingTime;
     private Pizzeria workPlace;
 
-    public Baker(String name, int bakingTime){
+    /**
+     * constructor for baker.
+     *
+     * @param name name of Baker
+     * @param bakingTime how much this Baker cooks pizza
+     */
+    public Baker(final String name, final int bakingTime) {
         this.name = name;
         this.bakingTime = bakingTime;
     }
 
-    public void setWorkPlace(Pizzeria pizzeria){
+    /**
+     * set where this baker work.
+     *
+     * @param pizzeria - work place
+     */
+    public void setWorkPlace(final Pizzeria pizzeria) {
         this.workPlace = pizzeria;
     }
 
+    /**
+     * run method for baker thread.
+     */
     @Override
     public void run() {
-        while (!isInterrupted()) {
+        while (!Thread.interrupted()
+                && (workPlace.isOpen.get() || !workPlace.toBake.isEmpty())) {
             try {
-                Order order = workPlace.toBake.get();
-                Thread.sleep(this.bakingTime);
-                workPlace.toDeliver.add(order);
-                workPlace.cooked.getAndIncrement();
+                Order curOrder = workPlace.toBake.get();
+                logger.info("Baker {} has started to cook order {}",
+                        this.name, curOrder.getOrderId());
+                Thread.sleep(bakingTime);
+                logger.info("Baker {} already cooked order {}",
+                        this.name, curOrder.getOrderId());
+                workPlace.toDeliver.add(curOrder);
+                logger.info("Baker {} move order {} to storage",
+                        this.name, curOrder.getOrderId());
             } catch (InterruptedException e) {
-
+                return;
             }
         }
     }
-
 }
