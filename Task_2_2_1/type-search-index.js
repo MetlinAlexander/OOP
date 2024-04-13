@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"myPizzeria","l":"Baker"},{"p":"myPizzeria","l":"Client"},{"p":"myPizzeria","l":"Courier"},{"p":"utils","l":"JsonReader"},{"p":"utils","l":"MySynhronizedQueue"},{"p":"myPizzeria","l":"Order"},{"p":"myPizzeria","l":"Pizzeria"}]
