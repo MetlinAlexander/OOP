@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-02-22T14:32:48" hostname="PC001171" time="2.932">
+  <properties/>
+  <testcase name="testParallelStreamWithTime()" classname="MainTest" time="0.412"/>
+  <testcase name="testMultiThreadWithTime()" classname="MainTest" time="1.946"/>
+  <testcase name="testMultiThreadArray1()" classname="MainTest" time="0.015"/>
+  <testcase name="testSequentialArray1()" classname="MainTest" time="0.013"/>
+  <testcase name="testParallelStreamArray1()" classname="MainTest" time="0.003"/>
+  <testcase name="testSequentialWithTime()" classname="MainTest" time="0.516"/>
+  <system-out><![CDATA[ParallelStream: 331
+MultiThread2: 505
+MultiThread3: 394
+MultiThread4: 386
+MultiThread5: 308
+MultiThread6: 342
+Sequential: 513
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
