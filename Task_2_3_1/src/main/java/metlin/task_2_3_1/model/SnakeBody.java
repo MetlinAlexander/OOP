@@ -1,4 +1,4 @@
-package snake;
+package metlin.task_2_3_1.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +32,8 @@ public class SnakeBody {
     }
 
     public boolean isSnake(int x, int y){
-        for(SnakeElement elem : this.snake) {
-            if(elem.x() == x && elem.y() == y){
+        for(int i=0; i<getLen(); i++) {
+            if(snake.get(i).x() == x && snake.get(i).y() == y){
                 return true;
             }
         }
@@ -41,6 +41,6 @@ public class SnakeBody {
     }
 
     public int getLen() {
-        return len;
+        return snake.size();
     }
 }

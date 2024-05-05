@@ -1,5 +1,8 @@
-package snake;
+package metlin.task_2_3_1.model;
 
+/**
+ * class represent snake element.
+ */
 public class SnakeElement {
     private int x;
 
