@@ -1,4 +1,4 @@
-package metlinTask231.model;
+package metlinsnake.model;
 
 import javafx.scene.input.KeyCode;
 import java.util.ArrayList;

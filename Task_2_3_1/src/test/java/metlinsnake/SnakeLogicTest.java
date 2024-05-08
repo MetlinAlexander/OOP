@@ -1,8 +1,8 @@
-package metlinTask231;
+package metlinsnake;
 
-import metlinTask231.model.Apple;
-import metlinTask231.model.SnakeBody;
-import metlinTask231.model.SnakeElement;
+import metlinsnake.model.Apple;
+import metlinsnake.model.SnakeBody;
+import metlinsnake.model.SnakeElement;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package metlinTask231;
+package metlinsnake;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -9,9 +9,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import metlinTask231.controller.SnakeGameController;
-import metlinTask231.model.SnakeGameModel;
-import metlinTask231.view.SnakeGameView;
+import metlinsnake.controller.SnakeGameController;
+import metlinsnake.model.SnakeGameModel;
+import metlinsnake.view.SnakeGameView;
 
 /**
  * snake game app.

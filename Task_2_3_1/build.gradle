@@ -26,8 +26,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-  mainModule = 'metlinTask231'
-  mainClass = 'metlinTask231.HelloApplication'
+  mainModule = 'metlinsnake'
+  mainClass = 'metlinsnake.HelloApplication'
 }
 
 javafx {

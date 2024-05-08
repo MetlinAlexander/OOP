@@ -1,4 +1,4 @@
-package metlinTask231.view;
+package metlinsnake.view;
 
 import javafx.scene.paint.Color;
 

@@ -1,4 +1,4 @@
-package metlinTask231.model;
+package metlinsnake.model;
 
 public enum Direction {
     UP,

@@ -1,4 +1,4 @@
-package metlinTask231.model;
+package metlinsnake.model;
 
 import java.util.ArrayList;
 import java.util.List;
