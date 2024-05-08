@@ -1,9 +1,9 @@
-package metlin.task_2_3_1.controller;
+package metlinTask231.controller;
 
 import javafx.scene.Group;
-import metlin.task_2_3_1.model.SnakeGameModel;
-import metlin.task_2_3_1.view.Colors;
-import metlin.task_2_3_1.view.SnakeGameView;
+import metlinTask231.model.SnakeGameModel;
+import metlinTask231.view.Colors;
+import metlinTask231.view.SnakeGameView;
 
 /**
  * controller class for snake game.

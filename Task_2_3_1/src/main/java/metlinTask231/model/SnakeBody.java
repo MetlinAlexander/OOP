@@ -1,4 +1,4 @@
-package metlin.task_2_3_1.model;
+package metlinTask231.model;
 
 import java.util.ArrayList;
 import java.util.List;

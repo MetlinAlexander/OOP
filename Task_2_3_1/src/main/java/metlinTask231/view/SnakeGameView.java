@@ -1,4 +1,4 @@
-package metlin.task_2_3_1.view;
+package metlinTask231.view;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
