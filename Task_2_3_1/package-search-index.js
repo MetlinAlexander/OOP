@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"metlin.task_2_3_1","l":"metlinsnake"},{"m":"metlin.task_2_3_1","l":"metlinsnake.controller"},{"m":"metlin.task_2_3_1","l":"metlinsnake.model"},{"m":"metlin.task_2_3_1","l":"metlinsnake.view"}];updateSearchResults();
