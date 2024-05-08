@@ -26,18 +26,14 @@ public class SnakeApp extends Application {
     /**
      * start of game.
      *
-     * @param stage the primary stage for this application, onto which
-     * the application scene can be set.
-     * Applications may create other stages, if needed, but they will not be
-     * primary stages.
-     * @throws InterruptedException
+     * @param stage the primary stage for this application
      */
     @Override
-    public void start(Stage stage) throws InterruptedException {
+    public void start(Stage stage) {
         Group root = new Group();
         SnakeGameView view = new SnakeGameView(root);
         SnakeGameModel model = new SnakeGameModel();
-        SnakeGameController controller = new SnakeGameController(model, view);
+
 
         Scene scene = new Scene(root, this.width, this.height);
         stage.setTitle("Snake");
@@ -45,11 +41,11 @@ public class SnakeApp extends Application {
         stage.show();
 
         Text snakeLengthText = new Text("Length: " + model.getSnake().getLen());
-        snakeLengthText.setFont(Font.
-                font("Arial", FontWeight.BOLD, this.fontSize));
+        snakeLengthText.setFont(Font
+                .font("Arial", FontWeight.BOLD, this.fontSize));
         snakeLengthText.setX(10);
         snakeLengthText.setY(20);
-
+        SnakeGameController controller = new SnakeGameController(model, view);
         root.getChildren().add(snakeLengthText);
 
         controller.setEventHandlers(root);
@@ -64,8 +60,8 @@ public class SnakeApp extends Application {
                     model.moveSnake();
                     controller.updateView();
                     // Обновляем текст длины змеи на каждом шаге
-                    snakeLengthText.setText("Length: " + model.getSnake().
-                            getLen());
+                    snakeLengthText.setText("Length: " + model.getSnake()
+                            .getLen());
                 }
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

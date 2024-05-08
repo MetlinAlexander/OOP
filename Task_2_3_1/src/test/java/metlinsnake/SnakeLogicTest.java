@@ -13,14 +13,14 @@ public class SnakeLogicTest {
         SnakeElement elem = new SnakeElement(0, 0);
         elem.setX(12);
         elem.setY(13);
-        Assertions.assertEquals(elem.y(), 13);
-        Assertions.assertEquals(elem.x(), 12);
+        Assertions.assertEquals(elem.getY(), 13);
+        Assertions.assertEquals(elem.getX(), 12);
     }
 
     @Test
     public void AppleTest() {
-        Apple apple = new Apple(11,13);
-        Assertions.assertEquals(apple.x(), 11);
+        Apple apple = new Apple(11, 13);
+        Assertions.assertEquals(apple.getX(), 11);
         Assertions.assertEquals(apple.y(), 13);
     }
 

@@ -28,8 +28,8 @@ public class SnakeGameController {
      * using info from model.
      */
     public void updateView() {
-        int snakeHeadX = model.getSnake().getHead().x();
-        int snakeHeadY = model.getSnake().getHead().y();
+        int snakeHeadX = model.getSnake().getHead().getX();
+        int snakeHeadY = model.getSnake().getHead().getY();
 
         for (int i = 0; i < 24; i++) {
             for (int j = 0; j < 16; j++) {
@@ -42,11 +42,11 @@ public class SnakeGameController {
                 } else {
                     // Используем два разных цвета для поля игры
                     if ((i + j) % 2 == 0) {
-                        view.getField()[i][j].
-                                setFill(Colors.GAME_FIELD_COLOR_1);
+                        view.getField()[i][j]
+                                .setFill(Colors.GAME_FIELD_COLOR_1);
                     } else {
-                        view.getField()[i][j].
-                                setFill(Colors.GAME_FIELD_COLOR_2);
+                        view.getField()[i][j]
+                                .setFill(Colors.GAME_FIELD_COLOR_2);
                     }
                 }
             }

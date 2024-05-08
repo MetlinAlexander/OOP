@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="864cb6e5-f259-4c07-a8ed-75cadd23fda2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/SnakeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/SnakeApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/controller/SnakeGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/controller/SnakeGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/model/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/Apple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/model/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/model/SnakeBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/model/SnakeElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/model/SnakeGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeGameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/view/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/view/Colors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metlinTask231/view/SnakeGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/view/SnakeGameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/metlinTask231/SnakeLogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/metlinsnake/SnakeLogicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/metlinsnake/SnakeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/SnakeApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/metlinsnake/controller/SnakeGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/controller/SnakeGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/metlinsnake/model/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/Apple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metlinsnake/model/SnakeGameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/metlinsnake/SnakeLogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/metlinsnake/SnakeLogicTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

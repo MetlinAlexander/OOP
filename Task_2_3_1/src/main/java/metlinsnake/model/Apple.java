@@ -24,7 +24,7 @@ public class Apple {
      *
      * @return x coord
      */
-    public int x() {
+    public int getX() {
         return x;
     }
 

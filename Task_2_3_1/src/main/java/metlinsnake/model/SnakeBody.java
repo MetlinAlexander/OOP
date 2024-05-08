@@ -59,7 +59,7 @@ public class SnakeBody {
      */
     public boolean isSnake(int x, int y) {
         for (int i = 0; i < getLen(); i++) {
-            if (snake.get(i).x() == x && snake.get(i).y() == y) {
+            if (snake.get(i).getX() == x && snake.get(i).getY() == y) {
                 return true;
             }
         }

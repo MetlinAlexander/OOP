@@ -50,7 +50,7 @@ public class SnakeGameModel {
      */
     public boolean isApple(int x, int y) {
         for (Apple elem : this.foods) {
-            if (elem.x() == x && elem.y() == y) {
+            if (elem.getX() == x && elem.y() == y) {
                 return true;
             }
         }
@@ -65,7 +65,7 @@ public class SnakeGameModel {
      */
     private void eatApple(int x, int y) {
         for (Apple elem : this.foods) {
-            if (elem.x() == x && elem.y() == y) {
+            if (elem.getX() == x && elem.y() == y) {
                 foods.remove(elem);
                 break;
             }
@@ -119,6 +119,8 @@ public class SnakeGameModel {
                 }
                 this.curDir = Direction.DOWN;
                 break;
+            default:
+                break;
         }
     }
 
@@ -128,16 +130,16 @@ public class SnakeGameModel {
     public void moveSnake() {
         SnakeElement currentHead = snake.getHead();
         SnakeElement newHead =
-                new SnakeElement(currentHead.x(), currentHead.y());
+                new SnakeElement(currentHead.getX(), currentHead.getY());
         updateDir();
         if (this.curDir == Direction.RIGHT) {
-            newHead.setX((newHead.x() + 1) % 24);
+            newHead.setX((newHead.getX() + 1) % 24);
         } else if (this.curDir == Direction.LEFT) {
-            newHead.setX((newHead.x() - 1 + 24) % 24);
+            newHead.setX((newHead.getX() - 1 + 24) % 24);
         } else if (this.curDir == Direction.UP) {
-            newHead.setY((newHead.y() - 1 + 16) % 16);
+            newHead.setY((newHead.getY() - 1 + 16) % 16);
         } else if (this.curDir == Direction.DOWN) {
-            newHead.setY((newHead.y() + 1) % 16);
+            newHead.setY((newHead.getY() + 1) % 16);
         }
         if (checkCollision(newHead)) {
             this.snake.increaseSnake(newHead);
@@ -175,11 +177,11 @@ public class SnakeGameModel {
      * @return true/false
      */
     private boolean checkCollision(SnakeElement newhead) {
-        if (isApple(newhead.x(), newhead.y())) {
-            eatApple(newhead.x(), newhead.y());
+        if (isApple(newhead.getX(), newhead.getY())) {
+            eatApple(newhead.getX(), newhead.getY());
             this.foods.add(generateApple());
             return true;
-        } else if (snake.isSnake(newhead.x(), newhead.y())) {
+        } else if (snake.isSnake(newhead.getX(), newhead.getY())) {
             this.isLose.set(true);
         }
         return false;

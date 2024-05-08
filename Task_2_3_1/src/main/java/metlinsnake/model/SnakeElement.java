@@ -24,7 +24,7 @@ public class SnakeElement {
      *
      * @return x coord
      */
-    public int x() {
+    public int getX() {
         return x;
     }
 
@@ -42,7 +42,7 @@ public class SnakeElement {
      *
      * @return y coord
      */
-    public int y() {
+    public int getY() {
         return y;
     }
 
