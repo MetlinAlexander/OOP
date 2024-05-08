@@ -13,13 +13,25 @@ import metlin.task_2_3_1.controller.SnakeGameController;
 import metlin.task_2_3_1.model.SnakeGameModel;
 import metlin.task_2_3_1.view.SnakeGameView;
 
-// SnakeApp.java
-import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
+/**
+ * snake game app.
+ */
 public class SnakeApp extends Application {
+
+    private int width = 1200;
+    private int height = 800;
+    private int fontSize = 20;
+
+
+    /**
+     * start of game.
+     *
+     * @param stage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     * @throws InterruptedException
+     */
     @Override
     public void start(Stage stage) throws InterruptedException {
         Group root = new Group();
@@ -27,17 +39,18 @@ public class SnakeApp extends Application {
         SnakeGameModel model = new SnakeGameModel();
         SnakeGameController controller = new SnakeGameController(model, view);
 
-        Scene scene = new Scene(root, 1200, 800);
+        Scene scene = new Scene(root, this.width, this.height);
         stage.setTitle("Snake");
         stage.setScene(scene);
         stage.show();
 
         Text snakeLengthText = new Text("Length: " + model.getSnake().getLen());
-        snakeLengthText.setFont(Font.font("Arial", FontWeight.BOLD, 20)); // Установка шрифта размером 20
-        snakeLengthText.setX(10); // Устанавливаем координаты текста
+        snakeLengthText.setFont(Font.
+                font("Arial", FontWeight.BOLD, this.fontSize));
+        snakeLengthText.setX(10);
         snakeLengthText.setY(20);
 
-        root.getChildren().add(snakeLengthText); // Добавляем текстовый элемент к корневому узлу
+        root.getChildren().add(snakeLengthText);
 
         controller.setEventHandlers(root);
 
@@ -45,18 +58,20 @@ public class SnakeApp extends Application {
 
         Thread move = new Thread(() -> {
             try {
-                while (!model.getIsLose().getAcquire() && !model.getIsWin().getAcquire()) {
+                while (!model.getIsLose().getAcquire()
+                        && !model.getIsWin().getAcquire()) {
                     Thread.sleep(model.getDelay());
                     model.moveSnake();
                     controller.updateView();
                     // Обновляем текст длины змеи на каждом шаге
-                    snakeLengthText.setText("Length: " + model.getSnake().getLen());
+                    snakeLengthText.setText("Length: " + model.getSnake().
+                            getLen());
                 }
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    if(model.getIsLose().getAcquire()) {
+                    if (model.getIsLose().getAcquire()) {
                         alert.setTitle("You Lose");
-                    }else{
+                    } else {
                         alert.setTitle("You Win");
                     }
                     alert.setHeaderText(null);
@@ -73,6 +88,11 @@ public class SnakeApp extends Application {
         move.start();
     }
 
+    /**
+     * starting point of app.
+     *
+     * @param args any useful args
+     */
     public static void main(String[] args) {
         launch();
     }

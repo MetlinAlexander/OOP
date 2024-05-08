@@ -1,14 +1,21 @@
 package metlin.task_2_3_1.view;
 
-// SnakeGameView.java
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * view class for game.
+ */
 public class SnakeGameView {
     private Group root;
     private Rectangle[][] field;
 
+    /**
+     * paint game field.
+     *
+     * @param root root of game
+     */
     public SnakeGameView(Group root) {
         this.root = root;
         this.field = new Rectangle[24][16];
@@ -28,6 +35,11 @@ public class SnakeGameView {
         }
     }
 
+    /**
+     * getter for field.
+     *
+     * @return field
+     */
     public Rectangle[][] getField() {
         return field;
     }

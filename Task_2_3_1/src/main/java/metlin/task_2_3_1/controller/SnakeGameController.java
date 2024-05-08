@@ -1,22 +1,32 @@
 package metlin.task_2_3_1.controller;
 
 import javafx.scene.Group;
-import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import metlin.task_2_3_1.model.SnakeBody;
 import metlin.task_2_3_1.model.SnakeGameModel;
 import metlin.task_2_3_1.view.Colors;
 import metlin.task_2_3_1.view.SnakeGameView;
 
+/**
+ * controller class for snake game.
+ */
 public class SnakeGameController {
     private SnakeGameModel model;
     private SnakeGameView view;
 
+    /**
+     * consructor for controler.
+     *
+     * @param model model of snake
+     * @param view view of game
+     */
     public SnakeGameController(SnakeGameModel model, SnakeGameView view) {
         this.model = model;
         this.view = view;
     }
 
+    /**
+     * method to update screen,
+     * using info from model.
+     */
     public void updateView() {
         int snakeHeadX = model.getSnake().getHead().x();
         int snakeHeadY = model.getSnake().getHead().y();
@@ -32,17 +42,22 @@ public class SnakeGameController {
                 } else {
                     // Используем два разных цвета для поля игры
                     if ((i + j) % 2 == 0) {
-                        view.getField()[i][j].setFill(Colors.GAME_FIELD_COLOR_1);
+                        view.getField()[i][j].
+                                setFill(Colors.GAME_FIELD_COLOR_1);
                     } else {
-                        view.getField()[i][j].setFill(Colors.GAME_FIELD_COLOR_2);
+                        view.getField()[i][j].
+                                setFill(Colors.GAME_FIELD_COLOR_2);
                     }
                 }
             }
         }
     }
 
-
-
+    /**
+     * set event handler.
+     *
+     * @param root root where set.
+     */
     public void setEventHandlers(Group root) {
         root.setOnKeyPressed(event -> {
             model.setLastPressedKey(event.getCode());
