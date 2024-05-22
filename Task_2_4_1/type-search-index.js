@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"App"},{"p":"dsl","l":"Course"},{"p":"utils","l":"Downloader"},{"p":"dsl","l":"GroovyConfigurable"},{"p":"dsl","l":"Student"},{"p":"dsl","l":"Task"},{"p":"utils","l":"TaskTotal"}];updateSearchResults();
