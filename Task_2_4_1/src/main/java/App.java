@@ -10,15 +10,16 @@ import org.apache.groovy.groovysh.Main;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.revwalk.RevCommit;
-import utils.Downloader;
-import utils.Helper;
-import utils.HtmlConstructor;
-import utils.TaskTotal;
 import java.io.File;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.HashMap;
+import utils.Downloader;
+import utils.Helper;
+import utils.HtmlConstructor;
+import utils.TaskTotal;
+
 
 /**
  * main class to start lab checking.

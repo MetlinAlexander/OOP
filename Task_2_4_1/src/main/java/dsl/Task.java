@@ -1,9 +1,8 @@
 package dsl;
 
+import java.time.LocalDate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.time.LocalDate;
 
 /**
  * model represents task.

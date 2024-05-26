@@ -7,9 +7,10 @@
     <list default="true" id="e8f51556-85b9-416e-914a-9f096b5b8543" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsl/GroovyConfigurable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsl/GroovyConfigurable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsl/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsl/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsl/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsl/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Helper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HtmlConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/HtmlConstructor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,10 +1,8 @@
 package dsl;
 
+import java.util.ArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.ArrayList;
-
 
 /**
  * model represents course.
