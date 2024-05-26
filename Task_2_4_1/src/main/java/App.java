@@ -5,36 +5,47 @@ import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.util.DelegatingScript;
 import lombok.SneakyThrows;
+import org.apache.commons.io.FileUtils;
 import org.apache.groovy.groovysh.Main;
 import org.codehaus.groovy.control.CompilerConfiguration;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.revwalk.RevCommit;
 import utils.Downloader;
 import utils.Helper;
 import utils.HtmlConstructor;
 import utils.TaskTotal;
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.revwalk.RevCommit;
-import java.time.ZoneId;
 
 import java.io.File;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.HashMap;
 
-import org.apache.commons.io.FileUtils;
-
+/**
+ * main class to start lab checking.
+ */
 public class App {
     private static String configPath = "src/main/resources/config.groovy";
     private static String repoPath = "src/main/resources/repos/";
-    private static HashMap<Student, HashMap<Task, TaskTotal>> taskInfo = new HashMap<>();
+    private static HashMap<Student, HashMap<Task, TaskTotal>> taskInfo =
+            new HashMap<>();
 
-    public static void main(String[] args) throws Exception {
+    /**
+     * main method to check lab.
+     *
+     * @param args extra args
+     * @throws Exception some exception
+     */
+    public static void main(final String[] args) throws Exception {
         // delete old data
         deleteOldRepo(repoPath);
         // configure work with dsl
         CompilerConfiguration cc = new CompilerConfiguration();
         cc.setScriptBaseClass(DelegatingScript.class.getName());
-        GroovyShell sh = new GroovyShell(Main.class.getClassLoader(), new Binding(), cc);
-        DelegatingScript script = (DelegatingScript)sh.parse(new File(configPath));
+        GroovyShell sh = new GroovyShell(Main.class.getClassLoader(),
+                new Binding(), cc);
+        DelegatingScript script = (DelegatingScript) sh.
+                parse(new File(configPath));
         Course config = new Course();
         script.setDelegate(config);
         script.run();
@@ -48,7 +59,8 @@ public class App {
             taskInfo.put(student, new HashMap<>());
 
             //download repo for cur student
-            boolean downloaded = mainDownloader.download(student.getRepo(), student.getNickname());
+            boolean downloaded = mainDownloader.download(student.getRepo(),
+                    student.getNickname());
             if (!downloaded) {
                 continue;
             }
@@ -59,8 +71,10 @@ public class App {
             }
 
             // check every task
-            for(var task : config.getTasks()) {
-                String taskPath = repoPath + "/" + student.getNickname() + "/" + task.getId();
+            for (var task : config.getTasks()) {
+                String taskPath = repoPath
+                        + "/" + student.getNickname()
+                        + "/" + task.getId();
                 Helper helper = new Helper(taskInfo.get(student).get(task),
                         taskPath,
                         repoPath + "/" + student.getNickname());
@@ -76,13 +90,13 @@ public class App {
         }
         try {
             HtmlConstructor.render(config.getTasks(), taskInfo);
-        } catch (Exception e){
+        } catch (Exception e) {
 
         }
         System.out.println(config);
     }
 
-    private static void deleteOldRepo(String path) {
+    private static void deleteOldRepo(final String path) {
         try {
             FileUtils.deleteDirectory(new File(path));
         } catch (Exception e) {
@@ -90,12 +104,18 @@ public class App {
         }
     }
 
+    /**
+     * calculate and set mark for current task.
+     *
+     * @param task task from config
+     * @param taskTotal task result
+     */
     private static void setMark(Task task, TaskTotal taskTotal) {
         double totalMark = -0.5;
-        if (taskTotal.isCompiled() &&
-                taskTotal.isJavadoc() &&
-                taskTotal.getTestsPassed() >= 0 &&
-                taskTotal.getTestsFailed() == 0 ) {
+        if (taskTotal.isCompiled()
+                && taskTotal.isJavadoc()
+                && taskTotal.getTestsPassed() >= 0
+                && taskTotal.getTestsFailed() == 0) {
             totalMark += 0.5;
         }
         if (taskTotal.isSoftDeadline()) {
@@ -107,12 +127,22 @@ public class App {
         taskTotal.setMark(totalMark);
     }
 
+    /**
+     * method to check deadlines.
+     *
+     * @param task task from config
+     * @param taskTotal task result
+     * @param student student from config
+     */
     @SneakyThrows
-    private static void checkDeadlines(Task task, TaskTotal taskTotal, Student student) {
+    private static void checkDeadlines(Task task,
+                                       TaskTotal taskTotal,
+                                       Student student) {
         File repository = new File(repoPath + student.getNickname());
         var commits = Git.open(repository).log().addPath(task.getId()).call();
 
-        LocalDate firstCommitDate = null, lastCommitDate = null;
+        LocalDate firstCommitDate = null;
+        LocalDate lastCommitDate = null;
 
         for (RevCommit commit : commits) {
             LocalDate commitDate = LocalDate.

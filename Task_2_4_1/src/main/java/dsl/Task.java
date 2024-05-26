@@ -5,12 +5,15 @@ import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
+/**
+ * model represents task.
+ */
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Task extends GroovyConfigurable {
-
-    String id;
-    String name;
-    LocalDate softDeadline;
-    LocalDate hardDeadline;
+    private String id;
+    private String name;
+    private LocalDate softDeadline;
+    private LocalDate hardDeadline;
 }

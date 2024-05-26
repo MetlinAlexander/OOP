@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 
+
+/**
+ * model represents course.
+ */
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Course extends GroovyConfigurable {
