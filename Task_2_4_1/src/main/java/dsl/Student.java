@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 public class Student extends GroovyConfigurable {
 
     private String nickname;
-    private String familyName;
+    private String passportName;
     private String repo;
     private String group;
 }

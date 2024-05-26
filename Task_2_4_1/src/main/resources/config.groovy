@@ -24,8 +24,8 @@ students = [
         },
         {
             group = "22214"
-            nickname = "e-buzyurkin"
-            passportName = "Evgeniy Buzyurkin"
-            repo = "https://github.com/e-buzyurkin/OOP"
+            nickname = "ZuZKho"
+            passportName = "Matvey Goncharov"
+            repo = "https://github.com/ZuZKho/OOP"
         }
 ]

@@ -4,12 +4,20 @@ import dsl.Task;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.util.DelegatingScript;
+import lombok.SneakyThrows;
 import org.apache.groovy.groovysh.Main;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import utils.Downloader;
+import utils.Helper;
+import utils.HtmlConstructor;
 import utils.TaskTotal;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.revwalk.RevCommit;
+import java.time.ZoneId;
 
 import java.io.File;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import org.apache.commons.io.FileUtils;
@@ -41,22 +49,92 @@ public class App {
 
             //download repo for cur student
             boolean downloaded = mainDownloader.download(student.getRepo(), student.getNickname());
+            if (!downloaded) {
+                continue;
+            }
             // put tasks for current student
             for (var task : config.getTasks()) {
                 taskInfo.get(student).put(task, new TaskTotal());
                 taskInfo.get(student).get(task).setDownloaded(downloaded);
             }
 
+            // check every task
+            for(var task : config.getTasks()) {
+                String taskPath = repoPath + "/" + student.getNickname() + "/" + task.getId();
+                Helper helper = new Helper(taskInfo.get(student).get(task),
+                        taskPath,
+                        repoPath + "/" + student.getNickname());
+                helper.runCompile();
+                helper.generateDocs();
+                helper.checkStyle();
+                helper.runTests();
+                checkDeadlines(task,
+                        taskInfo.get(student).get(task),
+                        student);
+                setMark(task, taskInfo.get(student).get(task));
+            }
+        }
+        try {
+            HtmlConstructor.render(config.getTasks(), taskInfo);
+        } catch (Exception e){
+
         }
         System.out.println(config);
     }
 
-    private static void deleteOldRepo(String path){
+    private static void deleteOldRepo(String path) {
         try {
             FileUtils.deleteDirectory(new File(path));
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private static void setMark(Task task, TaskTotal taskTotal) {
+        double totalMark = -0.5;
+        if (taskTotal.isCompiled() &&
+                taskTotal.isJavadoc() &&
+                taskTotal.getTestsPassed() >= 0 &&
+                taskTotal.getTestsFailed() == 0 ) {
+            totalMark += 0.5;
+        }
+        if (taskTotal.isSoftDeadline()) {
+            totalMark += 0.5;
+        }
+        if (taskTotal.isHardDeadline()) {
+            totalMark += 0.5;
+        }
+        taskTotal.setMark(totalMark);
+    }
+
+    @SneakyThrows
+    private static void checkDeadlines(Task task, TaskTotal taskTotal, Student student) {
+        File repository = new File(repoPath + student.getNickname());
+        var commits = Git.open(repository).log().addPath(task.getId()).call();
+
+        LocalDate firstCommitDate = null, lastCommitDate = null;
+
+        for (RevCommit commit : commits) {
+            LocalDate commitDate = LocalDate.
+                    ofInstant(Instant.
+                            ofEpochSecond(commit.getCommitTime()),
+                            ZoneId.systemDefault());
+            if (firstCommitDate == null || commitDate.
+                    isBefore(firstCommitDate)) {
+                firstCommitDate = commitDate;
+            }
+            if (lastCommitDate == null || commitDate.
+                    isAfter(lastCommitDate)) {
+                lastCommitDate = commitDate;
+            }
+        }
+
+        boolean softDeadline = firstCommitDate.isBefore(task.getSoftDeadline());
+        boolean hardDeadline = lastCommitDate.isBefore(task.getHardDeadline());
+
+        taskTotal.setSoftDeadline(softDeadline);
+        taskTotal.setHardDeadline(hardDeadline);
+        Git.shutdown();
     }
 
 }
