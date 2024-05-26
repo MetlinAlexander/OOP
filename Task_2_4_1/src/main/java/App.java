@@ -14,7 +14,6 @@ import utils.Downloader;
 import utils.Helper;
 import utils.HtmlConstructor;
 import utils.TaskTotal;
-
 import java.io.File;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -44,8 +43,8 @@ public class App {
         cc.setScriptBaseClass(DelegatingScript.class.getName());
         GroovyShell sh = new GroovyShell(Main.class.getClassLoader(),
                 new Binding(), cc);
-        DelegatingScript script = (DelegatingScript) sh.
-                parse(new File(configPath));
+        DelegatingScript script = (DelegatingScript) sh
+                .parse(new File(configPath));
         Course config = new Course();
         script.setDelegate(config);
         script.run();
@@ -91,9 +90,8 @@ public class App {
         try {
             HtmlConstructor.render(config.getTasks(), taskInfo);
         } catch (Exception e) {
-
+            System.out.println(e);
         }
-        System.out.println(config);
     }
 
     private static void deleteOldRepo(final String path) {
@@ -145,16 +143,16 @@ public class App {
         LocalDate lastCommitDate = null;
 
         for (RevCommit commit : commits) {
-            LocalDate commitDate = LocalDate.
-                    ofInstant(Instant.
-                            ofEpochSecond(commit.getCommitTime()),
-                            ZoneId.systemDefault());
-            if (firstCommitDate == null || commitDate.
-                    isBefore(firstCommitDate)) {
+            LocalDate commitDate = LocalDate
+                                    .ofInstant(Instant
+                                    .ofEpochSecond(commit.getCommitTime()),
+                                    ZoneId.systemDefault());
+            if (firstCommitDate == null || commitDate
+                    .isBefore(firstCommitDate)) {
                 firstCommitDate = commitDate;
             }
-            if (lastCommitDate == null || commitDate.
-                    isAfter(lastCommitDate)) {
+            if (lastCommitDate == null || commitDate
+                    .isAfter(lastCommitDate)) {
                 lastCommitDate = commitDate;
             }
         }

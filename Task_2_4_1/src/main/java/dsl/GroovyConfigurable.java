@@ -3,7 +3,6 @@ package dsl;
 import groovy.lang.Closure;
 import groovy.lang.GroovyObjectSupport;
 import groovy.lang.MetaProperty;
-
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 

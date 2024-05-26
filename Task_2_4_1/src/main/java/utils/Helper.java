@@ -9,7 +9,6 @@ import org.gradle.tooling.ProjectConnection;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedReader;
@@ -115,7 +114,7 @@ public class Helper {
             build.forTasks("test");
             build.run();
         } catch (BuildException ignored) {
-
+            return;
         } finally {
             connection.close();
         }
