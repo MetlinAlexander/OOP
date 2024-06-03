@@ -1,7 +1,7 @@
 package metlin;
 
-import static metlin.Server.id;
 import static metlin.Server.completedTasks;
+import static metlin.Server.id;
 import static metlin.Server.tasks;
 
 import java.io.IOException;

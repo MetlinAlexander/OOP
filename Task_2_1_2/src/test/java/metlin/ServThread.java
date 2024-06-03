@@ -23,7 +23,7 @@ public class ServThread implements Runnable {
 
     @Override
     public void run() {
-        var server = new Server(12345, data);
+        var server = new Server(8000, data);
         try {
             result = server.start();
         } catch (InterruptedException e) {

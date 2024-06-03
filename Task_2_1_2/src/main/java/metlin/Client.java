@@ -1,12 +1,12 @@
 package metlin;
 
-import metlin.utils.Primes;
-
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
+
+import metlin.utils.Primes;
 
 /**
  * client class.

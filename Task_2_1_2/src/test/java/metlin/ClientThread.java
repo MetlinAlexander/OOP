@@ -8,6 +8,6 @@ public class ClientThread implements Runnable {
 
     @Override
     public void run() {
-        Client.solver(12345);
+        Client.solver(8000);
     }
 }

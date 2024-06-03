@@ -26,12 +26,4 @@ public final class   Primes {
         }
         return true;
     }
-
-//    public static void main(String[] args) {
-//        for (long i = 10000000469L; i < 10000111469L; i++){
-//            if(isPrime(i)){
-//                System.out.print(i + "L, ");
-//            }
-//        }
-//    }
 }
