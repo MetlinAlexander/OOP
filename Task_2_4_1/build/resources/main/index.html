@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        p {
+            margin: 4px 0;
+        }
+        .red {
+            color: red;
+            font-weight: bold;
+        }
+        .yellow {
+            color: orange;
+            font-weight: bold;
+        }
+        .green {
+            color: green;
+            font-weight: bold;
+        }
+        .check-icon {
+            color: green;
+        }
+        .cross-icon {
+            color: red;
+        }
+        .mark {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Task Results</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                                    <th>Task_1_1_1</th>
+                    <th>Task_1_1_2</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>Metlin Alexander</td>
+                        <td>
+                            <p>Downloaded successfully: <span class="check-icon">&#10004;</span></p>
+                            <p>Compiled successfully: <span class="check-icon">&#10004;</span></p>
+                            <p>Javadoc generated: <span class="check-icon">&#10004;</span></p>
+                            <p>Checkstyle warning count:
+                                    <span class="yellow">3</span>
+                            </p>
+                            <p>Tests Passed/Skipped/Failed:
+                                <span class="green">6</span>/
+                                <span class="yellow">0</span>/
+                                <span class="red">0</span>
+                            </p>
+                            <p>Deadlines:
+                                    <span class="green"><b>soft</b></span>
+                                    <span class="green"><b>hard</b></span>
+                            </p>
+                            <p class="mark">Mark: <b>1</b></p>
+                        </td>
+                        <td>
+                            <p>Downloaded successfully: <span class="check-icon">&#10004;</span></p>
+                            <p>Compiled successfully: <span class="check-icon">&#10004;</span></p>
+                            <p>Javadoc generated: <span class="check-icon">&#10004;</span></p>
+                            <p>Checkstyle warning count:
+                                    <span class="yellow">6</span>
+                            </p>
+                            <p>Tests Passed/Skipped/Failed:
+                                <span class="green">9</span>/
+                                <span class="yellow">0</span>/
+                                <span class="red">0</span>
+                            </p>
+                            <p>Deadlines:
+                                    <span class="red"><b>soft</b></span>
+                                    <span class="green"><b>hard</b></span>
+                            </p>
+                            <p class="mark">Mark: <b>0.5</b></p>
+                        </td>
+                </tr>
+                <tr>
+                    <td>Matvey Goncharov</td>
+                        <td>
+                            <p>Downloaded successfully: <span class="check-icon">&#10004;</span></p>
+                            <p>Compiled successfully: <span class="check-icon">&#10004;</span></p>
+                            <p>Javadoc generated: <span class="check-icon">&#10004;</span></p>
+                            <p>Checkstyle warning count:
+                                    <span class="yellow">2</span>
+                            </p>
+                            <p>Tests Passed/Skipped/Failed:
+                                <span class="green">5</span>/
+                                <span class="yellow">0</span>/
+                                <span class="red">0</span>
+                            </p>
+                            <p>Deadlines:
+                                    <span class="green"><b>soft</b></span>
+                                    <span class="green"><b>hard</b></span>
+                            </p>
+                            <p class="mark">Mark: <b>1</b></p>
+                        </td>
+                        <td>
+                            <p>Downloaded successfully: <span class="check-icon">&#10004;</span></p>
+                            <p>Compiled successfully: <span class="check-icon">&#10004;</span></p>
+                            <p>Javadoc generated: <span class="check-icon">&#10004;</span></p>
+                            <p>Checkstyle warning count:
+                                    <span class="green">0</span>
+                            </p>
+                            <p>Tests Passed/Skipped/Failed:
+                                <span class="green">15</span>/
+                                <span class="yellow">0</span>/
+                                <span class="red">0</span>
+                            </p>
+                            <p>Deadlines:
+                                    <span class="green"><b>soft</b></span>
+                                    <span class="green"><b>hard</b></span>
+                            </p>
+                            <p class="mark">Mark: <b>1</b></p>
+                        </td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>

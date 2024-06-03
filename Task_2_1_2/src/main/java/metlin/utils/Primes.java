@@ -1,7 +1,9 @@
+package metlin.utils;
+
 /**
  * Utility class that contains a function for defining a prime number.
  */
-public final class Primes {
+public final class   Primes {
 
     /**
      * private constructor for utility class.
